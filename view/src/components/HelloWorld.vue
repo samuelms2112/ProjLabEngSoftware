@@ -10,13 +10,8 @@
           <th>Respo</th>
         </tr>
       </thead>
-      <tbody>
-         <tr v-for="task of lista" :key="task.id">
-           <td>{{ task.id }}</td>
-           <td>{{ task.tarefa }}</td>
-           <td>{{ task.descricao }}</td>
-           <td>{{ task.responsavel }}</td> 
-         </tr>
+      <tbody id="listaProdutos">
+         <tr v-for="item in lista" is="pd" :key="item.tarefa" :tarefa="item.tarefa" :descricao="item.descricao" :responsavel="item.responsavel"></tr>
       </tbody>
     </table>
   </div>
@@ -24,24 +19,40 @@
 
 <script>
 import Task from '../services/task'
+import Vue from 'vue'
+
+Vue.component('pd', {
+  props: ['id', 'tarefa', 'descricao', 'responsavel'],
+  template: '<tr><td>{{ id }}</td><td>{{ tarefa }}</td><td>{{ descricao }}</td><td>{{ responsavel }}</td></tr>'
+});
+
+var app = new Vue({
+  el: '#listaProdutos',
+  data: {
+    lista: []
+  }
+
+});
 export default {
+  
   name: 'HelloWorld',
   props: {
     msg: String
   },
 
-  date(){
-    return {
-      lista: []
-    }
-  },
+  // date(){
+  //   return {
+  //     lista: []
+  //   }
+  // },
 
   mounted(){
     Task.listar().then(res => {
       console.log(res.data)
-      this.lista = res.data
+      app.lista = res.data
+      console.log("Lista -> :" + app.lista);
     });
-  }
+  },
 }
 </script>
 

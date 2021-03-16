@@ -1,7 +1,7 @@
 const { request } = require('express');
 const database = require('../database/connection');
 
-class TaskController {
+class FornecedorController {
     insert(req, res) {
         const { documento, Nome, data_nasc, email, tipoPessoa } = req.body;
 
@@ -25,7 +25,10 @@ class TaskController {
     }
 
     update(req, res) {
-        const { documento, Nome, data_nasc, email, tipoPessoa } = req.body;
+        const { Nome, data_nasc, email, tipoPessoa } = req.body;
+        const documento = req.params.doc;
+
+        console.log("Id do fornecedor: " + documento);
 
         database.where({
             documento: documento
@@ -42,7 +45,9 @@ class TaskController {
     }
 
     delete(req, res) {
-        const { documento } = req.body;
+        const documento = req.params.doc;
+
+        console.log("Id do fornecedor: " + id);
 
         database.where({
             documento: documento
@@ -54,7 +59,10 @@ class TaskController {
     }
 
     select(req, res) {
-        const { documento } = req.body;
+        const documento = req.params.doc;
+
+        console.log("Id do fornecedor: " + documento);
+
 
         database.select("*").table("pessoa").where({ documento: documento }).then(data => {
             res.json(data);
@@ -77,4 +85,4 @@ class TaskController {
 
 }
 
-module.exports = new TaskController();
+module.exports = new FornecedorController();

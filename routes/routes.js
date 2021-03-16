@@ -9,10 +9,11 @@ router.get('/listarTarefas', TaskController.selectTodos);
 router.post('/listarUmaTarefa', TaskController.select);
 router.post('/removerTarefa', TaskController.delete);
 
-router.post('/novoFornecedor', FornecedorController.insert);
-router.post('/editarFornecedor', FornecedorController.update);
-router.get('/listarFornecedores', FornecedorController.selectTodos);
-router.post('/listarUmFornecedor', FornecedorController.select);
-router.post('/removerFornecedor', FornecedorController.delete);
+router.post('/fornecedor/novo', FornecedorController.insert); //--> Novo 
+router.put('/fornecedor/:doc/editar', FornecedorController.update); //--> Editar 
+router.get('/fornecedor/listar', FornecedorController.selectTodos); //--> Listar 
+router.get('/fornecedor/:doc/listar', FornecedorController.select); //--> Pesquisar 
+router.delete('/fornecedor/:doc/remover', FornecedorController.delete); //--> Remover
+
 
 module.exports = router;
