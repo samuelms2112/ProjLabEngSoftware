@@ -47,7 +47,7 @@ class FornecedorController {
     delete(req, res) {
         const documento = req.params.doc;
 
-        console.log("Id do fornecedor: " + id);
+        console.log("Id do fornecedor: " + documento);
 
         database.where({
             documento: documento

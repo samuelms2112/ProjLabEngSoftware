@@ -89,20 +89,7 @@
 </template>
 
 <script>
-import Fornecedor from '../services/fornecedor'
 
-
-export default{
-    data(){
-    return{
-        fornecedores: []
-    }},
-    mounted(){
-    Fornecedor.listar().then(res => {
-        this.fornecedores = res.data
-    })
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

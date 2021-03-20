@@ -15,7 +15,8 @@
         "mysql": "^2.18.1",
         "mysql2": "^2.2.5",
         "npm": "^7.6.1",
-        "vue": "^2.6.12"
+        "vue": "^2.6.12",
+        "vue-router": "^3.5.1"
     },
     "devDependencies": {
         "concurrently": "^3.5.0",
