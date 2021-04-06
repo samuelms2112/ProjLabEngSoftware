@@ -4,7 +4,8 @@ USE projeto;
 create table pessoa(
 	id int primary key auto_increment not null,
 	documento varchar(20) unique not null,
-    Nome varchar(225) not null,
+    nome varchar(225) not null,
+    nomeFantasia varchar(225)
     data_nasc varchar(12) not null,
     email varchar(225) not null,
     tipoPessoa boolean not null, /*--> Fisica ou Juritica <--*/
