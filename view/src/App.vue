@@ -35,10 +35,9 @@
                 <!-- The user image in the menu -->
                 <li class="user-header">
                   <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
-
                   <p>
-                    Fulano Junior
-                    <small>fulano@hcode.com.br</small>
+                    User
+                    <small>user@hcode.com.br</small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -68,7 +67,7 @@
             <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Fulano Junior</p>
+            <p>User</p>
             <!-- Status -->
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
@@ -79,39 +78,39 @@
           <li class="header">MENU</li>
           <!-- Optionally, you can add icons to the links -->
           <li class="active">
-            <a href="index.html">
+            <router-link to="/telainicial">
               <i class="fa fa-home"></i>
               <span>Tela Inicial</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="menus.html">
+            <router-link to="/fornecedor">
               <i class="fa fa-cutlery"></i>
-              <span>Menu</span>
-            </a>
+              <span>Fornecedores</span>
+            </router-link>
           </li>
           <li>
             <a href="reservations.html">
               <i class="fa fa-calendar-check-o"></i>
-              <span>Reservas</span>
+              <span>Clientes</span>
             </a>
           </li>
           <li>
             <a href="contacts.html">
               <i class="fa fa-comments"></i>
-              <span>Contatos</span>
+              <span>XXX</span>
             </a>
           </li>
           <li>
             <a href="users.html">
               <i class="fa fa-users"></i>
-              <span>Usuários</span>
+              <span>XXX</span>
             </a>
           </li>
           <li>
             <a href="emails.html">
               <i class="fa fa-envelope"></i>
-              <span>E-mails</span>
+              <span>XXX</span>
             </a>
           </li>
         </ul>
@@ -131,7 +130,7 @@
         <a target="_blank" href="https://www.hcode.com.br">Hcode</a>
       </div>
       <!-- Default to the left -->
-      Projeto desenvolvido no curso online de JavaScript da Hcode Treinamentos.
+      Projeto
     </footer>
 
   </div>

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Fornecedor from './components/Fornecedor.vue'
 import Teste from './components/teste.vue'
 
 Vue.use(VueRouter);
@@ -12,8 +12,8 @@ const router = new VueRouter({
             component: Teste
         },
         {
-            path: '/',
-            component: HelloWorld
+            path: '/fornecedor',
+            component: Fornecedor
         }
     ]
 })
