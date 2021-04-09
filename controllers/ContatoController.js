@@ -37,7 +37,7 @@ class ContatoController {
     }
 
     update(req, res) {
-        const { rua, numero, bairro, complemento, cidade, estado } = req.body;
+        const { telefone } = req.body;
         const idPessoa = req.params.doc;
         const id = req.params.id;
 
@@ -47,12 +47,7 @@ class ContatoController {
             idPessoa: idPessoa,
             id: id
         }).update({
-            rua: rua,
-            numero: numero,
-            bairro: bairro,
-            complemento: complemento,
-            cidade: cidade,
-            estado: estado,
+            telefone: telefone
         }).table("contato").then(data => {
             res.json({ message: "contato Atualizado com sucesso !" })
         }).catch(error => {
