@@ -1,0 +1,1760 @@
+<style>
+    [class*=canta-] *,
+    [class*=canta-] ::after,
+    [class*=canta-] ::before {
+        box-sizing: border-box
+    }
+    
+    [class*=canta-] p {
+        margin: 0
+    }
+    
+    [class*=canta-] img {
+        max-width: inherit;
+        vertical-align: inherit
+    }
+    
+    [class*=canta-] img.scale-hover {
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+        transition: all 1s ease-in-out;
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1)
+    }
+    
+    [class*=canta-] img.scale-hover:hover {
+        -moz-transform: scale(1.01);
+        -webkit-transform: scale(1.01);
+        -o-transform: scale(1.01);
+        -ms-transform: scale(1.01);
+        transform: scale(1.01)
+    }
+    
+    [class*=canta-] figure {
+        margin: 0
+    }
+    
+    [class*=canta-] select {
+        height: auto!important;
+        -webkit-appearance: menulist!important;
+        -moz-appearance: menulist!important;
+        appearance: menulist!important;
+        outline: 0
+    }
+    
+    [class*=canta-] fieldset legend {
+        margin-bottom: inherit;
+        border: none;
+        width: auto;
+        margin: unset
+    }
+    
+    .canta-animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both
+    }
+    
+    .canta-animated.infinite {
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite
+    }
+    
+    @-webkit-keyframes pulse {
+        from {
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+        50% {
+            -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05)
+        }
+        to {
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+    }
+    
+    @keyframes pulse {
+        from {
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+        50% {
+            -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05)
+        }
+        to {
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+    }
+    
+    .canta-pulse {
+        -webkit-animation-name: pulse;
+        animation-name: pulse
+    }
+    
+    .canta-text-shadows {
+        text-shadow: 1px 1px 3px #000
+    }
+    
+    .canta-container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto
+    }
+    
+    @media (min-width:576px) {
+        .canta-container {
+            max-width: 540px
+        }
+    }
+    
+    @media (min-width:768px) {
+        .canta-container {
+            max-width: 720px
+        }
+    }
+    
+    @media (min-width:992px) {
+        .canta-container {
+            max-width: 960px
+        }
+    }
+    
+    @media (min-width:1200px) {
+        .canta-container {
+            max-width: 1280px
+        }
+    }
+    
+    .canta-container-fluid {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto
+    }
+    
+    .canta-row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px
+    }
+    
+    .canta-no-gutters {
+        margin-right: 0;
+        margin-left: 0
+    }
+    
+    .canta-no-gutters>.canta-col,
+    .canta-no-gutters>[class*=col-] {
+        padding-right: 0;
+        padding-left: 0
+    }
+    
+    .canta-col {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        max-width: 100%;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px
+    }
+    
+    .canta-btn {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 2px solid transparent;
+        padding: .45em 20px .6em;
+        min-width: 122px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+        font-family: Nunito, nunitolight, nunito-light, arial;
+        font-weight: 700;
+        line-height: 1.5;
+        font-size: .875em;
+        color: #212529;
+        letter-spacing: 1px;
+        text-align: left;
+        text-decoration: none;
+        cursor: pointer;
+        outline: inherit;
+        text-align: center
+    }
+    
+    .canta-btn.btn-default {
+        background-color: #eee;
+        color: #000;
+        border: 2px solid #eee
+    }
+    
+    .canta-btn.btn-default:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-default.inverse {
+        background-color: #fff;
+        color: #000;
+        border: 2px solid #eee;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-default.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-default.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-laranja-smiles {
+        background-color: #ff5a00;
+        color: #fff;
+        border: 2px solid #ff5a00
+    }
+    
+    .canta-btn.btn-laranja-smiles:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-laranja-smiles.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #ff5a00;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-laranja-smiles.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-laranja-smiles.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-laranja-gol {
+        background-color: #ff5a00;
+        color: #fff;
+        border: 2px solid #ff5a00
+    }
+    
+    .canta-btn.btn-laranja-gol:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-laranja-gol.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #ff5a00;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-laranja-gol.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-laranja-gol.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-laranja-queimado {
+        background-color: #c63;
+        color: #fff;
+        border: 2px solid #c63
+    }
+    
+    .canta-btn.btn-laranja-queimado:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-laranja-queimado.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #c63;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-laranja-queimado.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-laranja-queimado.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-roxo-clube {
+        background-color: #639;
+        color: #fff;
+        border: 2px solid #639
+    }
+    
+    .canta-btn.btn-roxo-clube:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-roxo-clube.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #639;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-roxo-clube.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-roxo-clube.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-azul-cartoes {
+        background-color: #899eae;
+        color: #fff;
+        border: 2px solid #899eae
+    }
+    
+    .canta-btn.btn-azul-cartoes:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-azul-cartoes.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #899eae;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-azul-cartoes.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-azul-cartoes.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-verde-servicos {
+        background-color: #008d2d;
+        color: #fff;
+        border: 2px solid #008d2d
+    }
+    
+    .canta-btn.btn-verde-servicos:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-verde-servicos.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #008d2d;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-verde-servicos.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-verde-servicos.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-vinho-transacoes {
+        background-color: #a11f63;
+        color: #fff;
+        border: 2px solid #a11f63
+    }
+    
+    .canta-btn.btn-vinho-transacoes:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-vinho-transacoes.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #a11f63;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-vinho-transacoes.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-vinho-transacoes.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-verde-iniciativas {
+        background-color: #205865;
+        color: #fff;
+        border: 2px solid #205865
+    }
+    
+    .canta-btn.btn-verde-iniciativas:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-verde-iniciativas.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #205865;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-verde-iniciativas.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-verde-iniciativas.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-amarelo {
+        background-color: #fff200;
+        color: #a39e19;
+        border: 2px solid #fff200
+    }
+    
+    .canta-btn.btn-amarelo:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-amarelo.inverse {
+        background-color: #fff;
+        color: #a39e19;
+        border: 2px solid #fff200;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-amarelo.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-amarelo.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-amarelo-hertz {
+        background-color: #ffc845;
+        color: #205865;
+        border: 2px solid #ffc845
+    }
+    
+    .canta-btn.btn-amarelo-hertz:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-amarelo-hertz.inverse {
+        background-color: #fff;
+        color: #205865;
+        border: 2px solid #ffc845;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-amarelo-hertz.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-amarelo-hertz.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-cinza-claro {
+        background-color: #bcbec0;
+        color: #a39e19;
+        border: 2px solid #bcbec0
+    }
+    
+    .canta-btn.btn-cinza-claro:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-cinza-claro.inverse {
+        background-color: #fff;
+        color: #a39e19;
+        border: 2px solid #bcbec0;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-cinza-claro.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-cinza-claro.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-cinza-medio {
+        background-color: #bcbec0;
+        color: #fff;
+        border: 2px solid #bcbec0
+    }
+    
+    .canta-btn.btn-cinza-medio:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-cinza-medio.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #bcbec0;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-cinza-medio.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-cinza-medio.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-branco {
+        background-color: #7c7c7c;
+        color: #7e8082;
+        border: 2px solid #7c7c7c
+    }
+    
+    .canta-btn.btn-branco:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-branco.inverse {
+        background-color: #fff;
+        color: #7e8082;
+        border: 2px solid #7c7c7c;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-branco.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-branco.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-verde-canal {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #fff
+    }
+    
+    .canta-btn.btn-verde-canal:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-verde-canal.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #fff;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-verde-canal.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-verde-canal.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-rosa {
+        background-color: #c0d574;
+        color: #fff;
+        border: 2px solid #c0d574
+    }
+    
+    .canta-btn.btn-rosa:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-rosa.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #c0d574;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-rosa.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-rosa.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-magenta {
+        background-color: #ff7baa;
+        color: #fff;
+        border: 2px solid #ff7baa
+    }
+    
+    .canta-btn.btn-magenta:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-magenta.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #ff7baa;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-magenta.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-magenta.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-terracota {
+        background-color: #ec008c;
+        color: #fff;
+        border: 2px solid #ec008c
+    }
+    
+    .canta-btn.btn-terracota:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-terracota.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #ec008c;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-terracota.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-terracota.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-marrom-medio {
+        background-color: #bc6858;
+        color: #fff;
+        border: 2px solid #bc6858
+    }
+    
+    .canta-btn.btn-marrom-medio:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-marrom-medio.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #bc6858;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-marrom-medio.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-marrom-medio.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-verde-web {
+        background-color: #876f2b;
+        color: #fff;
+        border: 2px solid #876f2b
+    }
+    
+    .canta-btn.btn-verde-web:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-verde-web.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #876f2b;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-verde-web.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-verde-web.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-verde-medio {
+        background-color: #00f20c;
+        color: #fff;
+        border: 2px solid #00f20c
+    }
+    
+    .canta-btn.btn-verde-medio:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-verde-medio.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #00f20c;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-verde-medio.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-verde-medio.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-verde-localiza {
+        background-color: #408740;
+        color: #3a7f2d;
+        border: 2px solid #408740
+    }
+    
+    .canta-btn.btn-verde-localiza:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-verde-localiza.inverse {
+        background-color: #fff;
+        color: #3a7f2d;
+        border: 2px solid #408740;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-verde-localiza.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-verde-localiza.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-amarelo-escuro {
+        background-color: #008d2d;
+        color: #fff;
+        border: 2px solid #008d2d
+    }
+    
+    .canta-btn.btn-amarelo-escuro:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-amarelo-escuro.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #008d2d;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-amarelo-escuro.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-amarelo-escuro.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-azul-ceu {
+        background-color: #fec63b;
+        color: #fff;
+        border: 2px solid #fec63b
+    }
+    
+    .canta-btn.btn-azul-ceu:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-azul-ceu.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #fec63b;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-azul-ceu.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-azul-ceu.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-preto {
+        background-color: #00beff;
+        color: #fff;
+        border: 2px solid #00beff
+    }
+    
+    .canta-btn.btn-preto:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-preto.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #00beff;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-preto.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-preto.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-azul-medio {
+        background-color: #000;
+        color: #fff;
+        border: 2px solid #000
+    }
+    
+    .canta-btn.btn-azul-medio:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-azul-medio.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #000;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-azul-medio.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-azul-medio.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-azul-marinho {
+        background-color: #87b7c1;
+        color: #fff;
+        border: 2px solid #87b7c1
+    }
+    
+    .canta-btn.btn-azul-marinho:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-azul-marinho.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #87b7c1;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-azul-marinho.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-azul-marinho.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-tier-diamante {
+        background-color: #1e3265;
+        color: #fff;
+        border: 2px solid #1e3265
+    }
+    
+    .canta-btn.btn-tier-diamante:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-tier-diamante.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #1e3265;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-tier-diamante.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-tier-diamante.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-tier-ouro {
+        background-color: #444;
+        color: #fff;
+        border: 2px solid #444
+    }
+    
+    .canta-btn.btn-tier-ouro:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-tier-ouro.inverse {
+        background-color: #fff;
+        color: #fff;
+        border: 2px solid #444;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-tier-ouro.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-tier-ouro.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-tier-prata {
+        background-color: #d3b588;
+        color: #aaa;
+        border: 2px solid #d3b588
+    }
+    
+    .canta-btn.btn-tier-prata:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-tier-prata.inverse {
+        background-color: #fff;
+        color: #aaa;
+        border: 2px solid #d3b588;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-tier-prata.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-tier-prata.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-btn.btn-laranja-bf {
+        background-color: #bebfc1;
+        color: #8b795b;
+        border: 2px solid #bebfc1
+    }
+    
+    .canta-btn.btn-laranja-bf:hover {
+        opacity: .8
+    }
+    
+    .canta-btn.btn-laranja-bf.inverse {
+        background-color: #fff;
+        color: #8b795b;
+        border: 2px solid #bebfc1;
+        text-shadow: none
+    }
+    
+    .canta-btn.btn-laranja-bf.btn-sm {
+        min-width: inherit;
+        padding: .6em 15px .8em;
+        font-size: .625em
+    }
+    
+    .canta-btn.btn-laranja-bf.btn-outline {
+        outline-width: 10px;
+        outline-style: solid;
+        outline-color: #fff
+    }
+    
+    .canta-background-laranja-smiles {
+        background-color: #ff5a00
+    }
+    
+    .canta-background-laranja-gol {
+        background-color: #ff5a00
+    }
+    
+    .canta-background-laranja-queimado {
+        background-color: #c63
+    }
+    
+    .canta-background-roxo-clube {
+        background-color: #639
+    }
+    
+    .canta-background-azul-cartoes {
+        background-color: #899eae
+    }
+    
+    .canta-background-verde-servicos {
+        background-color: #008d2d
+    }
+    
+    .canta-background-vinho-transacoes {
+        background-color: #a11f63
+    }
+    
+    .canta-background-verde-iniciativas {
+        background-color: #205865
+    }
+    
+    .canta-background-amarelo {
+        background-color: #fff200
+    }
+    
+    .canta-background-amarelo-hertz {
+        background-color: #ffc845
+    }
+    
+    .canta-background-cinza-claro {
+        background-color: #bcbec0
+    }
+    
+    .canta-background-cinza-medio {
+        background-color: #bcbec0
+    }
+    
+    .canta-background-branco {
+        background-color: #7c7c7c
+    }
+    
+    .canta-background-verde-canal {
+        background-color: #fff
+    }
+    
+    .canta-background-rosa {
+        background-color: #c0d574
+    }
+    
+    .canta-background-magenta {
+        background-color: #ff7baa
+    }
+    
+    .canta-background-terracota {
+        background-color: #ec008c
+    }
+    
+    .canta-background-marrom-medio {
+        background-color: #bc6858
+    }
+    
+    .canta-background-verde-web {
+        background-color: #876f2b
+    }
+    
+    .canta-background-verde-medio {
+        background-color: #00f20c
+    }
+    
+    .canta-background-verde-localiza {
+        background-color: #408740
+    }
+    
+    .canta-background-amarelo-escuro {
+        background-color: #008d2d
+    }
+    
+    .canta-background-azul-ceu {
+        background-color: #fec63b
+    }
+    
+    .canta-background-preto {
+        background-color: #00beff
+    }
+    
+    .canta-background-azul-medio {
+        background-color: #000
+    }
+    
+    .canta-background-azul-marinho {
+        background-color: #87b7c1
+    }
+    
+    .canta-background-tier-diamante {
+        background-color: #1e3265
+    }
+    
+    .canta-background-tier-ouro {
+        background-color: #444
+    }
+    
+    .canta-background-tier-prata {
+        background-color: #d3b588
+    }
+    
+    .canta-color-laranja-smiles {
+        color: #ff5a00
+    }
+    
+    .canta-color-laranja-gol {
+        color: #ff5a00
+    }
+    
+    .canta-color-laranja-queimado {
+        color: #c63
+    }
+    
+    .canta-color-roxo-clube {
+        color: #639
+    }
+    
+    .canta-color-azul-cartoes {
+        color: #899eae
+    }
+    
+    .canta-color-verde-servicos {
+        color: #008d2d
+    }
+    
+    .canta-color-vinho-transacoes {
+        color: #a11f63
+    }
+    
+    .canta-color-verde-iniciativas {
+        color: #205865
+    }
+    
+    .canta-color-amarelo {
+        color: #fff200
+    }
+    
+    .canta-color-amarelo-hertz {
+        color: #ffc845
+    }
+    
+    .canta-color-cinza-claro {
+        color: #bcbec0
+    }
+    
+    .canta-color-cinza-medio {
+        color: #bcbec0
+    }
+    
+    .canta-color-branco {
+        color: #7c7c7c
+    }
+    
+    .canta-color-verde-canal {
+        color: #fff
+    }
+    
+    .canta-color-rosa {
+        color: #c0d574
+    }
+    
+    .canta-color-magenta {
+        color: #ff7baa
+    }
+    
+    .canta-color-terracota {
+        color: #ec008c
+    }
+    
+    .canta-color-marrom-medio {
+        color: #bc6858
+    }
+    
+    .canta-color-verde-web {
+        color: #876f2b
+    }
+    
+    .canta-color-verde-medio {
+        color: #00f20c
+    }
+    
+    .canta-color-verde-localiza {
+        color: #408740
+    }
+    
+    .canta-color-amarelo-escuro {
+        color: #008d2d
+    }
+    
+    .canta-color-azul-ceu {
+        color: #fec63b
+    }
+    
+    .canta-color-preto {
+        color: #00beff
+    }
+    
+    .canta-color-azul-medio {
+        color: #000
+    }
+    
+    .canta-color-azul-marinho {
+        color: #87b7c1
+    }
+    
+    .canta-color-tier-diamante {
+        color: #1e3265
+    }
+    
+    .canta-color-tier-ouro {
+        color: #444
+    }
+    
+    .canta-color-tier-prata {
+        color: #d3b588
+    }
+    
+    [class*=canta-] *,
+    [class*=canta-] ::after,
+    [class*=canta-] ::before {
+        box-sizing: border-box
+    }
+    
+    [class*=canta-] p {
+        margin: 0
+    }
+    
+    [class*=canta-] img {
+        max-width: inherit;
+        vertical-align: inherit
+    }
+    
+    [class*=canta-] img.scale-hover {
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+        transition: all 1s ease-in-out;
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1)
+    }
+    
+    [class*=canta-] img.scale-hover:hover {
+        -moz-transform: scale(1.01);
+        -webkit-transform: scale(1.01);
+        -o-transform: scale(1.01);
+        -ms-transform: scale(1.01);
+        transform: scale(1.01)
+    }
+    
+    [class*=canta-] figure {
+        margin: 0
+    }
+    
+    [class*=canta-] select {
+        height: auto!important;
+        -webkit-appearance: menulist!important;
+        -moz-appearance: menulist!important;
+        appearance: menulist!important;
+        outline: 0
+    }
+    
+    [class*=canta-] fieldset legend {
+        margin-bottom: inherit;
+        border: none;
+        width: auto;
+        margin: unset
+    }
+    
+    .canta-vitrine-novo-hoteis {
+        position: relative
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro {
+        position: relative;
+        top: 0;
+        z-index: 3;
+        padding: 15px
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.roxo-clube .canta-vitrine-novo-hoteis-h2 {
+        color: #663399
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.laranja-smiles .canta-vitrine-novo-hoteis-h2 {
+        color: #FF5A00
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.vinho-transacoes .canta-vitrine-novo-hoteis-h2 {
+        color: #A11F62
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.magenta .canta-vitrine-novo-hoteis-h2 {
+        color: #EC008C
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.verde-Localiza .canta-vitrine-novo-hoteis-h2 {
+        color: #008D2D
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.amarelo-hertz .canta-vitrine-novo-hoteis-h2 {
+        color: #FFC845
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.amarelo-shopping .canta-vitrine-novo-hoteis-h2 {
+        color: #FFF200
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.azul-cartoes .canta-vitrine-novo-hoteis-h2 {
+        color: #899eae
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.preto-uber .canta-vitrine-novo-hoteis-h2 {
+        color: #000000
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro.cinza-medio .canta-vitrine-novo-hoteis-h2 {
+        color: #616160
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-h2 {
+        font-family: "Nunito", "nunitolight", "nunito-light", "arial";
+        font-weight: 700;
+        line-height: 1;
+        font-size: 1.5em;
+        color: #616160;
+        letter-spacing: 1;
+        text-align: left;
+        text-shadow: normal;
+        margin-bottom: 40px
+    }
+    
+    @media(min-width: 768px) {
+        .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row {
+            display: flex;
+            flex-flow: wrap
+        }
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col {
+        position: relative;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+        margin-bottom: 25px;
+        width: 100%
+    }
+    
+    @media(min-width: 960px) {
+        .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col {
+            flex: 1;
+            margin-right: 25px
+        }
+        .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col:nth-child(2n) {
+            margin-right: 25px !important
+        }
+        .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col:last-child {
+            margin-right: 0 !important
+        }
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-imagem {
+        min-height: 150px;
+        width: 100%;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center center !important
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-imagem .canta-vitrine-novo-hoteis-card-imagem-header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-imagem .canta-vitrine-novo-hoteis-card-imagem-header .canta-vitrine-novo-hoteis-card-imagem-header-destino {
+        font-family: "Nunito", "nunitolight", "nunito-light", "arial";
+        font-weight: 400;
+        line-height: 1.1;
+        font-size: 1.5em;
+        color: #fff;
+        letter-spacing: 1;
+        text-align: left;
+        text-shadow: normal;
+        text-transform: uppercase
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc {
+        background: #fff;
+        padding: 20px
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-nome-hotel {
+        margin-top: 0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-family: "Nunito", "nunitolight", "nunito-light", "arial";
+        font-weight: 700;
+        line-height: 1.1;
+        font-size: 1.125em;
+        color: #616160;
+        letter-spacing: 1;
+        text-align: left;
+        text-shadow: normal;
+        padding-bottom: 10px
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info {
+        width: 100%;
+        display: flex;
+        justify-content: space-between
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-left {
+        padding-right: 10px
+    }
+    
+    @media(min-width: 500px) {
+        .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-left {
+            padding-right: 20px
+        }
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-left>div,
+    .canta-vitrine-novo-hoteis-card-desc-info-right>div {
+        margin-bottom: 5px
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-left>div:last-child,
+    .canta-vitrine-novo-hoteis-card-desc-info-right>div:last-child {
+        margin-bottom: 0
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-a-partir-de {
+        font-family: "Nunito", "nunitolight", "nunito-light", "arial";
+        font-weight: 700;
+        line-height: 1.1;
+        font-size: 0.625em;
+        color: #616160;
+        letter-spacing: 1;
+        text-align: left;
+        text-shadow: normal
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-preco-diaria {
+        font-family: "Nunito", "nunitolight", "nunito-light", "arial";
+        font-weight: 700;
+        line-height: 1.1;
+        font-size: 1.5em;
+        color: #616160;
+        letter-spacing: 1;
+        text-align: left;
+        text-shadow: normal
+    }
+    
+    @media(max-width: 500px) {
+        .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-preco-diaria {
+            font-size: 17px !important
+        }
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-desc .canta-vitrine-novo-hoteis-card-desc-info .canta-vitrine-novo-hoteis-card-desc-info-diaria {
+        font-family: "Nunito", "nunitolight", "nunito-light", "arial";
+        font-weight: 700;
+        line-height: 1.1;
+        font-size: 0.9375em;
+        color: #616160;
+        letter-spacing: 1;
+        text-align: right;
+        text-shadow: normal;
+        text-transform: uppercase;
+        font-size: 12px !important
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-tj {
+        background: #fff;
+        font-family: "Nunito", "nunitolight", "nunito-light", "arial";
+        font-weight: 400;
+        line-height: 1.62;
+        font-size: 0.8125em;
+        color: #616160;
+        letter-spacing: 1;
+        text-align: left;
+        text-shadow: normal;
+        padding: 15px 0
+    }
+    
+    .canta-vitrine-novo-hoteis .canta-vitrine-novo-hoteis-dentro .canta-vitrine-novo-hoteis-row .canta-vitrine-novo-hoteis-row-col .canta-vitrine-novo-hoteis-card-imagem {
+        height: 370px;
+    }
+    
+    .cta-mod-hoteis-v4-novo {
+        background: #a11f62;
+        padding: 6px;
+        border-radius: 5px;
+        color: #fff;
+        margin-top: 20px;
+    }
+    
+    .canta-vitrine-novo-hoteis-card-desc-nome-hotel {
+        min-height: 65px
+    }
+    
+    .canta-vitrine-novo-hoteis-card-desc-info-left p {
+        min-height: 68px;
+    }
+</style>
+
+
+<style>
+    .owl-stage-outer {
+        z-index: 999;
+    }
+    
+    .owl-nav {
+        z-index;
+        99;
+        position: absolute;
+        top: 0;
+        left: -20px;
+        height: 100%;
+        width: calc(100% + 40px);
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .owl-nav button span {
+        font-size: 60px;
+    }
+</style>
+
+#set ($ofertas = $canta.ofertas.getSiblings())
+<div class="canta-container-w">
+    <div class="canta-vitrine-novo-hoteis">
+        <div class="canta-vitrine-novo-hoteis-dentro $canta.info.cor_destaque.getData()">
+            <h2 class='canta-vitrine-novo-hoteis-h2'>
+                $canta.info.intro.getData()
+            </h2>
+            <div class="canta-vitrine-novo-hoteis-row" style='margin-bottom: 15px'>
+                <div class='canta-vitrine-novo-hoteis-carousel owl-carousel'>
+                    #foreach ($oferta in $ofertas)
+                    <div class="canta-vitrine-novo-hoteis-row-col">
+                        <div class="canta-vitrine-novo-hoteis-card" style='cursor: pointer'>
+                            <div class="canta-vitrine-novo-hoteis-card-imagem" style="background: url('$oferta.imagem.getData()'); background-position: $oferta.imagem.pos.getData() !important">
+                                <div class="canta-vitrine-novo-hoteis-card-imagem-header">
+                                    <div class="canta-vitrine-novo-hoteis-card-imagem-header-destino">#if($oferta.flag.getData() != "") $oferta.flag.getData() #end </div>
+                                    <div class="canta-vitrine-novo-hoteis-card-imagem-header-icone">
+                                        #if ($oferta.icone.getData() != "")
+                                        <img class="lazyload" data-src='$oferta.icone.getData()' alt='icone-flag'> #end
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="canta-vitrine-novo-hoteis-card-desc" style='min-height: 187px'>
+                                <h3 class="canta-vitrine-novo-hoteis-card-desc-nome-hotel">
+                                    $oferta.hotel.getData()
+                                </h3>
+                                <div class="canta-vitrine-novo-hoteis-card-desc-info">
+                                    <div class="canta-vitrine-novo-hoteis-card-desc-info-left">
+                                        <p style="font-family:Nunito,nunitolight,nunito-light,arial;padding-bottom: 5px; margin-bottom: 5px ; border-bottom: 3px dotted #7c7c7c"><strong style="color: #7c7c7c; padding: 10px 0">$oferta.diaria.getData()</strong></p>
+
+                                        <div style='font-size: 9px;font-family:Nunito,nunitolight,nunito-light,arial;' class="canta-vitrine-novo-hoteis-card-desc-info-a-partir-de">
+                                            $oferta.a_partir_de.getData()
+                                        </div>
+                                        <div class="canta-vitrine-novo-hoteis-card-desc-info-preco-diaria">
+                                            $oferta.Milhas.getData()
+                                        </div>
+                                        <div class="canta-vitrine-novo-hoteis-card-desc-info-diaria" style="text-align: left">
+                                            $oferta.Texto_milhas.getData()
+                                        </div>
+                                    </div>
+                                </div>
+                                #if($oferta.botao.getData() != "")
+                                <div class="canta-vitrine-novo-hoteis-card-desc-info">
+                                    <a href="$oferta.link.getData()" class="cta-mod-hoteis-v4-novo">$oferta.botao.getData()</a>
+                                </div>
+                                #end
+                            </div>
+                        </div>
+                    </div>
+                    #end
+                </div>
+            </div>
+            <div class="canta-vitrine-novo-hoteis-tj">
+                <p>
+                    $canta.info.tj.getData()
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function() {
+
+        $(".canta-vitrine-novo-hoteis-carousel").owlCarousel({
+
+            margin: 20,
+            items: 4,
+            stagePadding: 5,
+            dots: false,
+            nav: true,
+            loop: false,
+            responsive: {
+                768: {
+                    items: 4
+
+                },
+                460: {
+                    items: 1
+
+                },
+                350: {
+                    items: 1
+
+                },
+                0: {
+                    items: 1,
+                    dots: true
+                }
+            },
+            onInitialized: function(event) {
+                const elements = [...document.querySelectorAll('.canta-vitrine-novo-hoteis-carousel .canta-vitrine-novo-destino-row-col')];
+                const length = elements.length;
+                let max = elements[0].offsetHeight;
+                for (let i = 1; i < length; i++) {
+                    max = elements[i].offsetHeight > max ? elements[i].offsetHeight : max;
+                }
+
+                $("canta-vitrine-novo-hoteis-carousel .canta-vitrine-novo-destino-row-col").height(max);
+            }
+        });
+    });
+</script>

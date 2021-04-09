@@ -14,6 +14,10 @@ const router = new VueRouter({
         {
             path: '/fornecedor',
             component: Fornecedor
+        },
+        {
+            path: '/',
+            component: Fornecedor
         }
     ]
 })

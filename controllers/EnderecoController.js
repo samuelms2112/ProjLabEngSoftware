@@ -1,27 +1,26 @@
 const { request } = require('express');
 const database = require('../database/connection');
-const EnderecoController = require('../controllers/EnderecoController');
 
 class FornecedorController {
     insert(req, res) {
-        const { documento, nome, nomeFantasia, data_nasc, email, tipoPessoa } = req.body;
+        const { documento, rua, numero, bairro, complemento, cidade, estado } = req.body;
 
-        const tipoCadastro = 1;
+        const idPessoa = documento;
 
-        console.log(documento, nome, data_nasc, email, tipoPessoa);
+        console.log(idPessoa, rua, numero, bairro, complemento, cidade, estado);
 
         database.insert({
-            documento,
-            nome,
-            nomeFantasia,
+            rua,
+            numero,
+            bairro,
             data_nasc,
-            email,
-            tipoPessoa,
-            tipoCadastro
-        }).table("pessoa").then(data => {
+            complemento,
+            cidade,
+            estado,
+            idPessoa
+        }).table("endereco").then(data => {
             console.log(data);
-            res.json({ message: "Fornecedor criado com sucesso !" });
-            EnderecoController.insert(req);
+            res.json({ message: "Endereco Add com sucesso !" });
         }).catch(error => {
             console.log(error);
         });

@@ -42,6 +42,7 @@
                   <td>{{ fornecedor.tipoPessoa }}</td>
                   <td>
                     <button
+                      @click="editar(fornecedor)"
                       type="button"
                       class="Editar btn btn-xs btn-info btn-update"
                       data-toggle="modal"
@@ -77,23 +78,23 @@
             <div class="modal-body">
               <div class="form-group">
                 <label for="inputDoc">Documento</label>
-                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc">
+                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc" v-model="fornecedor.documento">
               </div>
               <div class="form-group">
                 <label for="inputRazaoSocial">Razão Social</label>
-                <input type="text" class="form-control" id="inputRs" name="rs">
+                <input type="text" class="form-control" id="inputRs" name="rs" v-model="fornecedor.nome">
               </div>
               <div class="form-group">
                 <label for="inputNomeF">Nome Fantasia</label>
-                <textarea class="form-control" id="inputNomeF" name="nf"></textarea>
+                <textarea class="form-control" id="inputNomeF" name="nf" v-model="fornecedor.nomeFantasia"></textarea>
               </div>
               <div class="form-group">
                 <label for="inputEmail">E-mail</label>
-                <input type="number" class="form-control" id="inputEmail" name="email">
+                <input type="email" class="form-control" id="inputEmail" name="email" v-model="fornecedor.email">
               </div>
               <div class="form-group">
                 <label for="inputTp">Tipo de Pessoa</label>
-                <input type="number" readonly="readonly" class="form-control" id="inputTp" name="tp">
+                <input type="number" readonly="readonly" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
               </div>
             </div>
             <div class="modal-footer">
@@ -103,11 +104,87 @@
           </form>
         </div>
       </div>
-    </div>
+</div>
+
+<div class="modal fade" id="modal-create">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00eb14;">
+          <form method="post">
+            <input type="hidden" name="id">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Novo Fornecedor </h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputDoc">Documento</label>
+                <input type="text" class="form-control" id="inputDoc" name="doc" v-model="fornecedor.documento">
+              </div>
+              <div class="form-group">
+                <label for="inputRazaoSocial">Razão Social</label>
+                <input type="text" class="form-control" id="inputRs" name="rs" v-model="fornecedor.nome">
+              </div>
+              <div class="form-group">
+                <label for="inputNomeF">Nome Fantasia</label>
+                <textarea class="form-control" id="inputNomeF" name="nf" v-model="fornecedor.nomeFantasia"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="inputNomeF">Data de fundação</label>
+                <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="fornecedor.nomeFantasia">
+              </div>
+              <div class="form-group">
+                <label for="inputEmail">E-mail</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" v-model="fornecedor.email">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Tipo de Pessoa</label>
+                <input type="number" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+              </div>
+              <hr>
+              <div class="form-group">
+                <label for="inputTp">Endereco</label>
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Rua</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Numero</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Bairro</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Complemento</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Cidade</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Estado</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
 
 
   </div>
 </template>
+
+
 
 <script>
 import Fornecedor from "../services/fornecedor";
@@ -115,8 +192,18 @@ import Fornecedor from "../services/fornecedor";
 export default {
   data() {
     return {
+      
+    fornecedor:{
+      documento: '',
+      nome: '',
+      nomeFantasia: '',
+      email: '',
+      tipoPessoa: '',
+    },
       fornecedores: [],
-    };
+    }
+    ;
+    
   },
   created: function() {
     Fornecedor.listar().then((res) => {
@@ -124,30 +211,16 @@ export default {
       console.log(res.data);
     });
   },
+
+  methods:{
+    editar(fornecedor){
+      this.fornecedor = fornecedor
+    }
+  }
 };
 </script>
 
-<script>
-$(function() {
-  $(document).on("click", ".Editar", function(e) {
-    e.preventDefault;
-    var tdobj = $(this)
-      .closest("tr")
-      .find("td");
-    var rs = tdobj[0].innerHTML;
-    var nf = tdobj[1].innerHTML;
-    var email = tdobj[2].innerHTML;
-    var doc = tdobj[3].innerHTML;
-    var tp = tdobj[4].innerHTML;
 
-    $("#inputDoc").val(doc);
-    $("#inputRs").val(rs);
-    $("#inputNomeF").val(nf);
-    $("#inputEmail").val(email);
-    $("#inputTp").val(tp);
-  });
-});
-</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
