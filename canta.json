@@ -1,0 +1,30 @@
+{
+    "documento": 55588877,
+    "nome": "samuel",
+    "nomeFantasia": " silva",
+    "data_nasc": "21/12/2000",
+    "email": "samuel.ms2112@gmail.com",
+    "tipoPessoa": 0,
+    "rua": "Rua 1",
+    "numero": "123",
+    "bairro": "Bairro 2",
+    "complemento": "Casa",
+    "cidade": "Cidade 3",
+    "estado": "Estado 4"
+}
+
+
+{
+    "rua": "Rua 1",
+    "numero": "123",
+    "bairro": "Bdffairro 2",
+    "complemento": "Casa",
+    "cidade": "sdfd 456",
+    "estado": "sdfcsedfd"
+}
+
+
+{
+    "telefone": "997181083",
+    "documento": 55588877,
+}

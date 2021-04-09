@@ -3,15 +3,15 @@ const database = require('../database/connection');
 
 class ClienteController {
     insert(req, res) {
-        const { documento, Nome, data_nasc, email, tipoPessoa } = req.body;
+        const { documento, nome, data_nasc, email, tipoPessoa } = req.body;
 
         const tipoCadastro = 0;
 
-        console.log(documento, Nome, data_nasc, email, tipoPessoa);
+        console.log(documento, nome, data_nasc, email, tipoPessoa);
 
         database.insert({
             documento,
-            Nome,
+            nome,
             data_nasc,
             email,
             tipoPessoa,

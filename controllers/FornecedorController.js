@@ -20,8 +20,9 @@ class FornecedorController {
             tipoCadastro
         }).table("pessoa").then(data => {
             console.log(data);
-            res.json({ message: "Fornecedor criado com sucesso !" });
-            EnderecoController.insert(req);
+            const m = "";
+            EnderecoController.insertF(req, m);
+            res.json({ message: "Fornecedor criado com sucesso !  " + m });
         }).catch(error => {
             console.log(error);
         });

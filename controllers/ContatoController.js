@@ -1,46 +1,36 @@
 const { request } = require('express');
 const database = require('../database/connection');
 
-class EnderecoController {
+class ContatoController {
     insertF(req, res) {
-        const { documento, rua, numero, bairro, complemento, cidade, estado, } = req.body;
+        const { documento, telefone } = req.body;
 
         const idPessoa = documento;
 
-        console.log(idPessoa, rua, numero, bairro, complemento, cidade, estado);
+        console.log(idPessoa, telefone);
 
         database.insert({
-            rua,
-            numero,
-            bairro,
-            complemento,
-            cidade,
-            estado,
+            telefone,
             idPessoa
-        }).table("endereco").then(data => {
+        }).table("contato").then(data => {
             console.log(data);
-            res = "Endereco Add com sucesso !";
+            res = "contato Add com sucesso !";
         }).catch(error => {
             console.log(error);
         });
     }
 
     insert(req, res) {
-        const { idPessoa, rua, numero, bairro, complemento, cidade, estado } = req.body;
+        const { idPessoa, telefone } = req.body;
 
-        console.log(idPessoa, rua, numero, bairro, complemento, cidade, estado);
+        console.log(idPessoa, telefone);
 
         database.insert({
-            rua,
-            numero,
-            bairro,
-            complemento,
-            cidade,
-            estado,
+            telefone,
             idPessoa
-        }).table("endereco").then(data => {
+        }).table("contato").then(data => {
             console.log(data);
-            res.json({ message: "Endereco Add com sucesso !" })
+            res.json({ message: "contato Add com sucesso !" })
         }).catch(error => {
             console.log(error);
         });
@@ -63,8 +53,8 @@ class EnderecoController {
             complemento: complemento,
             cidade: cidade,
             estado: estado,
-        }).table("endereco").then(data => {
-            res.json({ message: "Endereco Atualizado com sucesso !" })
+        }).table("contato").then(data => {
+            res.json({ message: "contato Atualizado com sucesso !" })
         }).catch(error => {
             res.json(error);
         });
@@ -79,8 +69,8 @@ class EnderecoController {
         database.where({
             idPessoa: idPessoa,
             id: id
-        }).del().table("endereco").then(data => {
-            res.json({ message: "Endereco Removido" })
+        }).del().table("contato").then(data => {
+            res.json({ message: "contato Removido" })
         }).catch(error => {
             res.json(error);
         });
@@ -92,7 +82,7 @@ class EnderecoController {
         console.log("Id do idPessoa: " + idPessoa);
 
 
-        database.select("*").table("endereco").where({
+        database.select("*").table("contato").where({
             idPessoa: idPessoa,
         }).then(data => {
             res.json(data);
@@ -102,7 +92,7 @@ class EnderecoController {
     }
 
     selectTodos(req, res) {
-        database.select("*").table("endereco").then(data => {
+        database.select("*").table("contato").then(data => {
             console.log(data);
             res.json(data);
         }).catch(error => {
@@ -112,4 +102,4 @@ class EnderecoController {
 
 }
 
-module.exports = new EnderecoController();
+module.exports = new ContatoController();
