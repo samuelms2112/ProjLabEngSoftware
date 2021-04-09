@@ -49,12 +49,21 @@
                       data-target="#modal-update"
                     >
                       <i class="fa fa-pencil"></i> Editar</button
-                    >&nbsp;<button
+                    >&nbsp;
+                    <button
                       type="button"
                       class="btn btn-xs btn-danger btn-delete"
                     >
                       <i class="fa fa-trash"></i> Excluir
                     </button>
+                    <button
+                      type="button"
+                      class="btn btn-xs btn-danger btn-delete"
+                    >
+                      <i class="fa fa-trash"></i> mais
+                    </button>
+                    
+                    
                   </td>
                 </tr>
               </tbody>
@@ -78,23 +87,23 @@
             <div class="modal-body">
               <div class="form-group">
                 <label for="inputDoc">Documento</label>
-                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc" v-model="fornecedor.documento">
+                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc" v-model="fornecedorE.documento">
               </div>
               <div class="form-group">
                 <label for="inputRazaoSocial">Razão Social</label>
-                <input type="text" class="form-control" id="inputRs" name="rs" v-model="fornecedor.nome">
+                <input type="text" class="form-control" id="inputRs" name="rs" v-model="fornecedorE.nome">
               </div>
               <div class="form-group">
                 <label for="inputNomeF">Nome Fantasia</label>
-                <textarea class="form-control" id="inputNomeF" name="nf" v-model="fornecedor.nomeFantasia"></textarea>
+                <textarea class="form-control" id="inputNomeF" name="nf" v-model="fornecedorE.nomeFantasia"></textarea>
               </div>
               <div class="form-group">
                 <label for="inputEmail">E-mail</label>
-                <input type="email" class="form-control" id="inputEmail" name="email" v-model="fornecedor.email">
+                <input type="email" class="form-control" id="inputEmail" name="email" v-model="fornecedorE.email">
               </div>
               <div class="form-group">
                 <label for="inputTp">Tipo de Pessoa</label>
-                <input type="number" readonly="readonly" class="form-control" id="inputTp" name="tp" v-model="fornecedor.tipoPessoa">
+                <input type="number" readonly="readonly" class="form-control" id="inputTp" name="tp" v-model="fornecedorE.tipoPessoa">
               </div>
             </div>
             <div class="modal-footer">
@@ -193,6 +202,13 @@ export default {
   data() {
     return {
       
+    fornecedorE:{
+      documento: '',
+      nome: '',
+      nomeFantasia: '',
+      email: '',
+      tipoPessoa: '',
+    },
     fornecedor:{
       documento: '',
       nome: '',
@@ -214,7 +230,7 @@ export default {
 
   methods:{
     editar(fornecedor){
-      this.fornecedor = fornecedor
+      this.fornecedorE = fornecedor
     }
   }
 };

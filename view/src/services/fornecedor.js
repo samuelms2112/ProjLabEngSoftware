@@ -10,4 +10,5 @@ export default {
         return http.post('/fornecedor/novo')
     }
 
+
 }
