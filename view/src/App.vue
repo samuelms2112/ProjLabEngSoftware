@@ -77,23 +77,23 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU</li>
           <!-- Optionally, you can add icons to the links -->
-          <li class="active">
+          <li class="active" id="Inicial" v-on:click="click('Inicial')">
             <router-link to="/telainicial">
               <i class="fa fa-home"></i>
               <span>Tela Inicial</span>
             </router-link>
           </li>
-          <li>
+          <li id="Fornecedores" v-on:click="click('Fornecedores')">
             <router-link to="/fornecedor">
               <i class="fa fa-cutlery"></i>
               <span>Fornecedores</span>
             </router-link>
           </li>
           <li>
-            <a href="reservations.html">
+              <router-link to="/cliente">
               <i class="fa fa-calendar-check-o"></i>
               <span>Clientes</span>
-            </a>
+            </router-link>
           </li>
           <li>
             <a href="contacts.html">
@@ -139,8 +139,18 @@
 
 <script>
 
+
+
+
 export default {
-  name: 'App'
+  name: 'App',
+
+  methods:{
+    click(e){
+        e.classList.add("active")
+    }
+
+}
 }
 </script>
 

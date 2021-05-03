@@ -2,14 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Fornecedor from './components/Fornecedor.vue'
-import Teste from './components/teste.vue'
+import Cliente from './components/Cliente.vue'
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
     routes: [{
-            path: '/teste',
-            component: Teste
+            path: '/cliente',
+            component: Cliente
         },
         {
             path: '/fornecedor',

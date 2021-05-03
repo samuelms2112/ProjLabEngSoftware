@@ -25,7 +25,7 @@ class ClienteController {
     }
 
     update(req, res) {
-        const { Nome, data_nasc, email, tipoPessoa } = req.body;
+        const { nome, email, tipoPessoa } = req.body;
         const documento = req.params.doc;
 
         console.log("Id do Cliente: " + documento);
@@ -33,8 +33,7 @@ class ClienteController {
         database.where({
             documento: documento
         }).update({
-            Nome: Nome,
-            data_nasc: data_nasc,
+            Nome: nome,
             email: email,
             tipoPessoa: tipoPessoa,
         }).table("pessoa").then(data => {

@@ -40,14 +40,17 @@ CREATE TABLE subgrupo (
     `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(40) NOT NULL,
     `isfracioned` BIT COMMENT '0 inteiro \n 1 fracionado'
+
+    /*FK GRUPO*/
+
 );
 
 CREATE TABLE pedido (
     `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     `fornecedor_id` BIGINT(20) UNSIGNED NOT NULL,
     `datacompra` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `qtde` DECIMAL(10,2),
-    `valorpago` DECIMAL(15,2) NOT NULL
+    `valortotal` DECIMAL(15,2) NOT NULL 
+    /*fk fornecedor*/
 );
 
 CREATE TABLE labengprod (

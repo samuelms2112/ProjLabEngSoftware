@@ -5,7 +5,7 @@
         <li>
           <a href="/index.html"><i class="fa fa-home"></i> Home</a>
         </li>
-        <li class="active">Fornecedores</li>
+        <li class="active">Cliente</li>
       </ol>
     </section>
 
@@ -25,8 +25,7 @@
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Razão Social</th>
-                  <th>Nome Fantasia</th>
+                  <th>Nome</th>
                   <th>E-mail</th>
                   <th>Documento</th>
                   <th>Tipo de Pessoa</th>
@@ -34,15 +33,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="fornecedor of fornecedores" :key="fornecedor.id">
-                  <td>{{ fornecedor.nome }}</td>
-                  <td>{{ fornecedor.nomeFantasia }}</td>
-                  <td>{{ fornecedor.email }}</td>
-                  <td>{{ fornecedor.documento }}</td>
-                  <td>{{ fornecedor.tipoPessoa }}</td>
+                <tr v-for="Cliente of Clientes" :key="Cliente.id">
+                  <td>{{ Cliente.nome }}</td>
+                  <td>{{ Cliente.email }}</td>
+                  <td>{{ Cliente.documento }}</td>
+                  <td>{{ Cliente.tipoPessoa }}</td>
                   <td>
                     <button
-                      @click="editarB(fornecedor)"
+                      @click="editarB(Cliente)"
                       type="button"
                       class="Editar btn btn-xs btn-info btn-update"
                       data-toggle="modal"
@@ -87,23 +85,19 @@
             <div class="modal-body">
               <div class="form-group">
                 <label for="inputDoc">Documento</label>
-                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc" v-model="fornecedorE.documento">
+                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc" v-model="ClienteE.documento">
               </div>
               <div class="form-group">
                 <label for="inputRazaoSocial">Razão Social</label>
-                <input type="text" class="form-control" id="inputRs" name="rs" v-model="fornecedorE.nome">
-              </div>
-              <div class="form-group">
-                <label for="inputNomeF">Nome Fantasia</label>
-                <textarea class="form-control" id="inputNomeF" name="nf" v-model="fornecedorE.nomeFantasia"></textarea>
+                <input type="text" class="form-control" id="inputRs" name="rs" v-model="ClienteE.nome">
               </div>
               <div class="form-group">
                 <label for="inputEmail">E-mail</label>
-                <input type="email" class="form-control" id="inputEmail" name="email" v-model="fornecedorE.email">
+                <input type="email" class="form-control" id="inputEmail" name="email" v-model="ClienteE.email">
               </div>
               <div class="form-group">
                 <label for="inputTp">Tipo de Pessoa</label>
-                <input type="number" readonly="readonly" class="form-control" id="inputTp" name="tp" v-model="fornecedorE.tipoPessoa">
+                <input type="number" readonly="readonly" class="form-control" id="inputTp" name="tp" v-model="ClienteE.tipoPessoa">
               </div>
             </div>
             <div class="modal-footer">
@@ -124,64 +118,32 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title">Novo Fornecedor </h4>
+              <h4 class="modal-title">Novo Cliente </h4>
             </div>
             <div class="modal-body">
               <div class="form-group">
                 <label for="inputDoc">Documento</label>
-                <input type="text" class="form-control" id="inputDoc" name="doc" v-model="fornecedorS.documento">
+                <input type="text" class="form-control" id="inputDoc" name="doc" v-model="ClienteS.documento">
               </div>
               <div class="form-group">
                 <label for="inputRazaoSocial">Razão Social</label>
-                <input type="text" class="form-control" id="inputRs" name="rs" v-model="fornecedorS.nome">
-              </div>
-              <div class="form-group">
-                <label for="inputNomeF">Nome Fantasia</label>
-                <textarea class="form-control" id="inputNomeF" name="nf" v-model="fornecedorS.nomeFantasia"></textarea>
+                <input type="text" class="form-control" id="inputRs" name="rs" v-model="ClienteS.nome">
               </div>
               <div class="form-group">
                 <label for="inputNomeF">Data de fundação</label>
-                <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="fornecedorS.dataFund">
+                <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="ClienteS.dataFund">
               </div>
               <div class="form-group">
                 <label for="inputEmail">E-mail</label>
-                <input type="email" class="form-control" id="inputEmail" name="email" v-model="fornecedorS.email">
+                <input type="email" class="form-control" id="inputEmail" name="email" v-model="ClienteS.email">
               </div>
               <div class="form-group">
                 <label for="inputTp">Tipo de Pessoa</label>
-                <select v-model="fornecedorS.tipoPessoa" class="form-control" id="inputTp" name="tp">
+                <select v-model="ClienteS.tipoPessoa" class="form-control" id="inputTp" name="tp">
                   <option disabled value="">Escolha um item</option>
                   <option value="0">PF</option>
                   <option value="1">PJ</option>
                 </select>
-              </div>
-              <hr>
-              <div class="form-group">
-                <label for="inputTp">Endereco</label>
-              </div>
-              <div class="form-group">
-                <label for="inputTp">Rua</label>
-                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedorS.rua">
-              </div>
-              <div class="form-group">
-                <label for="inputTp">Numero</label>
-                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedorS.numero">
-              </div>
-              <div class="form-group">
-                <label for="inputTp">Bairro</label>
-                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedorS.bairro">
-              </div>
-              <div class="form-group">
-                <label for="inputTp">Complemento</label>
-                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedorS.complemento">
-              </div>
-              <div class="form-group">
-                <label for="inputTp">Cidade</label>
-                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedorS.cidade">
-              </div>
-              <div class="form-group">
-                <label for="inputTp">Estado</label>
-                <input type="text" class="form-control" id="inputTp" name="tp" v-model="fornecedorS.Estado">
               </div>
             </div>
             <div class="modal-footer">
@@ -200,39 +162,31 @@
 
 
 <script>
-import Fornecedor from "../services/fornecedor";
+import Cliente from "../services/cliente";
 
 export default {
   data() {
     return {
-    fornecedorE:{
+    ClienteE:{
       documento: '',
       nome: '',
-      nomeFantasia: '',
       email: '',
+      tipoPessoa: ''
     },
-    fornecedorS:{
+    ClienteS:{
       documento: '',
       nome: '',
-      nomeFantasia: '',
       dataFund: '',
       email: '',
-      tipoPessoa: '',
-      rua: '',
-      numero: '',
-      bairro: '',
-      complemento: '',
-      cidade: '',
-      Estado: '',
+      tipoPessoa: ''
     },
-    fornecedor:{
+    cliente:{
       documento: '',
       nome: '',
-      nomeFantasia: '',
       email: '',
       tipoPessoa: '',
     },
-      fornecedores: [],
+      Clientes: [],
     }
     ;
     
@@ -244,18 +198,18 @@ export default {
   methods:{
 
     listar(){
-        Fornecedor.listar().then((res) => {
-          this.fornecedores = res.data;
+        Cliente.listar().then((res) => {
+          this.Clientes = res.data;
       });
     },
 
-    editarB(fornecedor){
-      this.fornecedorE = fornecedor
+    editarB(Cliente){
+      this.ClienteE = Cliente
      },
 
      editar(){
-        Fornecedor.editar(this.fornecedorE, this.fornecedorE.documento).then( res => {
-        this.fornecedorE = {}
+        Cliente.editar(this.ClienteE, this.ClienteE.documento).then( res => {
+        this.ClienteE = {}
         alert(res.data.message);
         this.listar()
       })
@@ -263,8 +217,8 @@ export default {
 
     salvar(){
 
-      Fornecedor.salvar(this.fornecedorS).then( res => {
-        this.fornecedorS = {}
+      Cliente.salvar(this.ClienteS).then( res => {
+        this.ClienteS = {}
         alert(res.data.message);
         this.listar()
       })

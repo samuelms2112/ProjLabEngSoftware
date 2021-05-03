@@ -11,17 +11,17 @@ const ContatoController = require('../controllers/ContatoController');
 // router.post('/listarUmaTarefa', TaskController.select);
 // router.post('/removerTarefa', TaskController.delete);
 
-router.post('/fornecedor/novo', FornecedorController.insert); //--> Novo 
-router.put('/fornecedor/:doc/editar', FornecedorController.update); //--> Editar 
-router.get('/fornecedor/listar', FornecedorController.selectTodos); //--> Listar 
-router.get('/fornecedor/:doc/listar', FornecedorController.select); //--> Pesquisar 
-router.delete('/fornecedor/:doc/remover', FornecedorController.delete); //--> Remover
+router.post('/fornecedor/', FornecedorController.insert); //--> Novo 
+router.put('/fornecedor/:doc/', FornecedorController.update); //--> Editar 
+router.get('/fornecedor/', FornecedorController.selectTodos); //--> Listar 
+router.get('/fornecedor/:doc/', FornecedorController.select); //--> Pesquisar 
+router.delete('/fornecedor/:doc/', FornecedorController.delete); //--> Remover
 
-router.post('/cliente/novo', ClienteController.insert); //--> Novo 
-router.put('/cliente/:doc/editar', ClienteController.update); //--> Editar 
-router.get('/cliente/listar', ClienteController.selectTodos); //--> Listar 
-router.get('/cliente/:doc/listar', ClienteController.select); //--> Pesquisar 
-router.delete('/cliente/:doc/remover', ClienteController.delete); //--> Remover
+router.post('/cliente/', ClienteController.insert); //--> Novo 
+router.put('/cliente/:doc/', ClienteController.update); //--> Editar 
+router.get('/cliente/', ClienteController.selectTodos); //--> Listar 
+router.get('/cliente/:doc/', ClienteController.select); //--> Pesquisar 
+router.delete('/cliente/:doc/', ClienteController.delete); //--> Remover
 
 router.post('/endereco/novo', EnderecoController.insert); //--> Novo 
 router.put('/endereco/:doc/editar/:id', EnderecoController.update); //--> Editar 

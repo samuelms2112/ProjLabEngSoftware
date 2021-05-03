@@ -29,7 +29,7 @@ class FornecedorController {
     }
 
     update(req, res) {
-        const { nome, nomeFantasia, data_nasc, email, tipoPessoa } = req.body;
+        const { nome, nomeFantasia, email, tipoPessoa } = req.body;
         const documento = req.params.doc;
 
         console.log("Id do fornecedor: " + documento);
@@ -39,7 +39,6 @@ class FornecedorController {
         }).update({
             nome: nome,
             nomeFantasia: nomeFantasia,
-            data_nasc: data_nasc,
             email: email,
             tipoPessoa: tipoPessoa,
         }).table("pessoa").then(data => {
