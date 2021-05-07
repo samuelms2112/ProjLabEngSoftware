@@ -14,5 +14,8 @@ export default {
         return http.put('/cliente/' + doc + '/', cliente)
     },
 
+    delete: (doc) => {
+        return http.delete('/cliente/' + doc + '/')
+    },
 
 }

@@ -51,6 +51,7 @@
                       <i class="fa fa-pencil"></i> Editar</button
                     >&nbsp;
                     <button
+                      @click="deleteF(fornecedor)"
                       type="button"
                       class="btn btn-xs btn-danger btn-delete"
                     >
@@ -267,9 +268,17 @@ export default {
         this.fornecedorS = {}
         alert(res.data.message);
         this.listar()
-      })
-      
+      })      
     },
+
+    deleteF(fornecedor){
+        this.fornecedorE = fornecedor
+        Fornecedor.delete(this.fornecedorE.documento).then( res => {
+        this.fornecedorE = {}
+        alert(res.data.message);
+        this.listar()
+      })
+     },
 
     
   }

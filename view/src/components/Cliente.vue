@@ -49,6 +49,7 @@
                       <i class="fa fa-pencil"></i> Editar</button
                     >&nbsp;
                     <button
+                     @click="deletarB(Cliente)"
                       type="button"
                       class="btn btn-xs btn-danger btn-delete"
                     >
@@ -203,8 +204,21 @@ export default {
       });
     },
 
+    deleteF(){
+        Cliente.delete(this.ClienteE.documento).then( res => {
+        this.ClienteE = {}
+        alert(res.data.message);
+        this.listar()
+      }).console.error("oiiii");
+     },
+
     editarB(Cliente){
       this.ClienteE = Cliente
+     },
+
+     deletarB(Cliente){
+      this.ClienteE = Cliente
+      this.deleteF();
      },
 
      editar(){
@@ -224,6 +238,8 @@ export default {
       })
       
     },
+
+    
 
     
   }

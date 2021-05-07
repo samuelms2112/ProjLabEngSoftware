@@ -14,5 +14,9 @@ export default {
         return http.put('/fornecedor/' + doc + '/', fornecedor)
     },
 
+    delete: (doc) => {
+        return http.delete('/fornecedor/' + doc + '/')
+    },
+
 
 }

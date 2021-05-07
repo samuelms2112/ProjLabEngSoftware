@@ -9,7 +9,8 @@ CREATE TABLE pessoa(
    data_nasc VARCHAR(12) NOT NULL,
    email VARCHAR(225) NOT NULL,
    tipoPessoa boolean NOT NULL, /*--> Fisica ou Juritica <--*/
-   tipoCadastro boolean not null /*--> Cliente ou Fornecedor <--*/
+   tipoCadastro boolean not null, /*--> Cliente ou Fornecedor <--*/
+   status boolean not null
 );
 
 CREATE TABLE contato(
