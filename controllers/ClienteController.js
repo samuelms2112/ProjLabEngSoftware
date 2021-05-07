@@ -49,9 +49,12 @@ class ClienteController {
         console.log("Id do Cliente: " + documento);
 
         database.where({
-            documento: documento
-        }).del().table("pessoa").then(data => {
-            res.json({ message: "Cliente Removido" })
+            documento: documento,
+            status: 1
+        }).update({
+            status: 0
+        }).table("pessoa").then(data => {
+            res.json({ message: "Cliente Removido" });
         }).catch(error => {
             res.json(error);
         });
@@ -71,7 +74,7 @@ class ClienteController {
     }
 
     selectTodos(req, res) {
-        database.select("*").table("pessoa").where({ tipoCadastro: 0 }).then(data => {
+        database.select("*").table("pessoa").where({ tipoCadastro: 0, status: 1 }).then(data => {
             console.log(data);
             res.json(data);
         }).catch(error => {

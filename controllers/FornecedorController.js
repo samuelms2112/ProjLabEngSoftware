@@ -53,10 +53,21 @@ class FornecedorController {
 
         console.log("Id do fornecedor: " + documento);
 
+        // database.where({
+        //     documento: documento
+        // }).del().table("pessoa").then(data => {
+        //     res.json({ message: "Fornecedor Removido" })
+        // }).catch(error => {
+        //     res.json(error);
+        // });
+
         database.where({
-            documento: documento
-        }).del().table("pessoa").then(data => {
-            res.json({ message: "Fornecedor Removido" })
+            documento: documento,
+            status: 1
+        }).update({
+            status: 0
+        }).table("pessoa").then(data => {
+            res.json({ message: "Fornecedor Removido" });
         }).catch(error => {
             res.json(error);
         });
@@ -79,7 +90,7 @@ class FornecedorController {
     }
 
     selectTodos(req, res) {
-        database.select("*").table("pessoa").where({ tipoCadastro: 1 }).then(data => {
+        database.select("*").table("pessoa").where({ tipoCadastro: 1, status: 1 }).then(data => {
             console.log(data);
             res.json(data);
         }).catch(error => {
