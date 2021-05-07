@@ -3,6 +3,8 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Fornecedor from './components/Fornecedor.vue'
 import Cliente from './components/Cliente.vue'
+import InfoCliente from './components/InfoCliente.vue'
+import InfoFornecedor from './components/InfoFornecedor.vue'
 
 Vue.use(VueRouter);
 
@@ -18,6 +20,14 @@ const router = new VueRouter({
         {
             path: '/',
             component: Fornecedor
+        },
+        {
+            path: '/cliente/:idCli',
+            component: InfoCliente
+        },
+        {
+            path: '/cliente/:idFor',
+            component: InfoFornecedor
         }
     ]
 })
