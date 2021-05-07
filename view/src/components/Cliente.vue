@@ -55,11 +55,12 @@
                     >
                       <i class="fa fa-trash"></i> Excluir
                     </button>
+                    &nbsp;
                     <button
                       type="button"
-                      class="btn btn-xs btn-danger btn-delete"
+                      class="btn btn-xs btn btn-dark btn-delete"
                     >
-                      <i class="fa fa-trash"></i> mais
+                      <i class="fa fa-folder-open"></i> mais
                     </button>
                     
                     
