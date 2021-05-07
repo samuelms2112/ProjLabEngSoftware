@@ -10,7 +10,7 @@ CREATE TABLE pessoa(
    email VARCHAR(225) NOT NULL,
    tipoPessoa boolean NOT NULL COMMENT 'Fisica ou Juritica',
    tipoCadastro boolean NOT NULL COMMENT 'Cliente ou Fornecedor',
-   apagado boolean NOT NULL DEFAULT 0 COMMENT '0 false \n 1 Pessoa deletada'
+   status boolean NOT NULL DEFAULT 1 COMMENT '1 false \n 0 Pessoa deletada'
 );
 
 CREATE TABLE contato(
