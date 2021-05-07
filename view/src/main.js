@@ -28,6 +28,10 @@ const router = new VueRouter({
         {
             path: '/cliente/:idFor',
             component: InfoFornecedor
+        },
+        {
+            path: '/login',
+            component: InfoFornecedor
         }
     ]
 })
