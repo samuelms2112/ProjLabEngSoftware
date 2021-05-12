@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS projeto;
 USE projeto;
 
-CREATE TABLE pessoa(
+CREATE TABLE pessoa (
    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
    documento VARCHAR(20) UNIQUE NOT NULL,
    nome VARCHAR(225) NOT NULL,
@@ -11,6 +11,16 @@ CREATE TABLE pessoa(
    tipoPessoa boolean NOT NULL COMMENT 'Fisica ou Juritica',
    tipoCadastro boolean NOT NULL COMMENT 'Cliente ou Fornecedor',
    status boolean NOT NULL DEFAULT 1 COMMENT '1 false \n 0 Pessoa deletada'
+);
+
+CREATE TABLE `login` (
+   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+   nome VARCHAR(100) NOT NULL,
+   email VARCHAR(225) NOT NULL,
+   senha VARCHAR(400) NOT NULL,
+   `admin` boolean NOT NULL DEFAULT 0,
+   `apagado` boolean NOT NULL DEFAULT 0 COMMENT '0 Login ativado \n 1 Login desativado',
+   CONSTRAINT UNIQUE email
 );
 
 CREATE TABLE contato(
