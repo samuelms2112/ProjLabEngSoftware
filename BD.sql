@@ -46,7 +46,7 @@ CREATE TABLE subgrupo (
 CREATE TABLE pedido (
     `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     `datacompra` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `valortotal` DECIMAL(15,2) NOT NULL 
+    `valortotal` DECIMAL(15,2) NOT NULL, 
     `fornecedor_id` BIGINT(20) UNSIGNED NOT NULL,
     FOREIGN KEY (compra_iten_id) REFERENCES compraitens(id)
 );
