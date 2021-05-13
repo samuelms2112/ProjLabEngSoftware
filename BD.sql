@@ -16,11 +16,10 @@ CREATE TABLE pessoa (
 CREATE TABLE `login` (
    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
    nome VARCHAR(100) NOT NULL,
-   email VARCHAR(225) NOT NULL,
+   email VARCHAR(225) NOT NULL UNIQUE,
    senha VARCHAR(400) NOT NULL,
    `admin` boolean NOT NULL DEFAULT 0,
-   `apagado` boolean NOT NULL DEFAULT 0 COMMENT '0 Login ativado \n 1 Login desativado',
-   CONSTRAINT UNIQUE email
+   `apagado` boolean NOT NULL DEFAULT 0 COMMENT, '0 Login ativado \n 1 Login desativado'
 );
 
 CREATE TABLE contato(
@@ -47,12 +46,6 @@ CREATE TABLE grupo (
    `nome` VARCHAR(40) NOT NULL
 );
 
-CREATE TABLE subgrupo (
-   `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-   `nome` VARCHAR(40) NOT NULL,
-   `fracionado` BOOLEAN COMMENT '0 inteiro \n 1 fracionado'
-);
-
 CREATE TABLE pedido (
     `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     `datacompra` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -66,9 +59,7 @@ CREATE TABLE produto001 (
    `nome` VARCHAR(100) NOT NULL,
    `ean`  VARCHAR(13),
    `grupo_id` BIGINT(20) UNSIGNED,
-   `subgrupo_id` BIGINT(20) UNSIGNED,
    `preco` DECIMAL(15,2) NOT NULL,
-   `estoque_id` BIGINT(20) UNSIGNED NOT NULL,
    `apagado` boolean NOT NULL DEFAULT 0 COMMENT '0 false \n 1 Produto deletado',
 
    FOREIGN KEY (grupo_id) REFERENCES grupo(id),
@@ -115,7 +106,8 @@ CREATE TABLE estoque (
    `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
    `prod_id` BIGINT(20) UNSIGNED NOT NULL,
    -- Definir regra se produto e fracionado ou inteiro
-   `qtde` DECIMAL(10,2), FOREIGN KEY (prod_id) REFERENCES produto001(id)
+   `qtde` DECIMAL(10,2), 
+   FOREIGN KEY (prod_id) REFERENCES produto001(id)
 );
 
 -- Relacionamento N pra N fornecedor produto

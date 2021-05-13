@@ -2,20 +2,20 @@ const { request } = require('express');
 const database = require('../database/connection');
 const bcrypt = require('bcrypt');
 
-const saltRounds = 10;
+const saltRounds = bcrypt.genSaltSync(10);
 
 class LoginController {
     insert(req, res) {
-        const { nome, email, senha, admin } = req.body;
+        const { nome, email, pass, admin } = req.body;
 
-        console.log(nome, email, senha, admin);
+        console.log(nome, email, pass, admin);
 
-        const Hashedpassword = await bcrypt.hash(req.body.senha, saltRounds);
+        const senha = bcrypt.hashSync(pass, saltRounds);
 
         database.insert({
             nome,
             email,
-            Hashedpassword,
+            senha,
             admin
         }).table("login").then(data => {
             console.log(data);
@@ -26,31 +26,33 @@ class LoginController {
     }
 
     update(req, res) {
-        const { nome, email, senha } = req.body;
+        const { nome, email, pass } = req.body;
         const id_user = req.params.id;
 
         console.log("Id do Login: " + id_user);
 
-        if (!senha) {
+        if (!pass) {
+
             database.where({
                 id: id_user
             }).update({
                 nome,
                 email
             }).table("login").then(data => {
-                res.json({ message: "Login atualizado com sucesso" });
+                res.json({ message: "Login atualizado com sucesso sem senha" });
             }).catch(error => {
                 res.json(error);
             });
         } else {
+            const senha = bcrypt.hashSync(pass, saltRounds);
             database.where({
                 id: id_user
             }).update({
                 nome,
                 email,
-                Hashedpassword
+                senha
             }).table("login").then(data => {
-                res.json({ message: "Login atualizado com sucesso" });
+                res.json({ message: "Login atualizado com sucesso com senha" });
             }).catch(error => {
                 res.json(error);
             });
@@ -96,31 +98,28 @@ class LoginController {
     }
 
     login(req, res) {
-        const { email, password } = req.body;
+        const { email, pass } = req.body;
 
-        if (!email || !password) {
+        if (!email || !pass) {
             return res.status(400).json('incorrect form submission');
         }
         console.log("email retrieved from req: ", email);
         console.log("length of email retrieved from req: ", email.length);
 
-        database.select('email, senha').table('login')
-        .where( 'email', '=', req.email)
-        .first
-        .then(data => {
-          const isValid = bcrypt.compare(password, data[0].hash);
-          if (isValid) {
-            return database.select('*').from('login')
-              .where('email', '=', email)
-              .then(user => {
-                res.json(user[0])
-              })
-              .catch(err => res.status(400).json('unable to get user'))
-          } else {
-            res.status(400).json('wrong password')
-          }
-        })
-        .catch(err => res.status(400).json('wrong email'))
+        database.select('*').table('login')
+            .where({ email: email }).then(data => {
+                if (bcrypt.compareSync(pass, data[0].senha)) {
+                    return database.select('*').from('login')
+                        .where({ email: email })
+                        .then(user => {
+                            res.json(user)
+                        })
+                        .catch(err => res.status(400).json('incapaz de obter o usuário'))
+                } else {
+                    res.status(400).json('Senha Errada')
+                }
+            })
+            .catch(err => res.status(400).json('Email Errada'))
     }
 }
 
