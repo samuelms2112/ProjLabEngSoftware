@@ -1,5 +1,7 @@
 <template>
-  <div class="content-wrapper">
+
+  <div class="content-wrapper les">
+    
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
@@ -9,36 +11,83 @@
       </ol>
     </section>
 
+
+<section class="content container-fluid" style="padding-top: 50px;" >
+  <div class="box" >
+  <div class="box-header">
+      <h3 class="box-title">Dados do Cliente</h3>
+      <div class="box-body no-padding">
+  <br>
+        <div class="row">
+    <div class="group col-md-4">
+      <label for="inputDoc">ID</label>
+      <input type="text" readonly="readonly" class="form-control" placeholder="id" v-model="clienteP[0].id ">
+    </div>
+    <div class="group col-md-8">
+      <label for="inputDoc">Documento</label>
+      <input type="text" readonly="readonly" class="form-control" placeholder="Documento" v-model="clienteP[0].documento">
+    </div>
+    <div class="group col-md-6">
+      <label for="inputDoc">Nome</label>
+      <input type="text" readonly="readonly" class="form-control" placeholder="Nome" v-model="clienteP[0].nome">
+    </div>
+    <div class="group col-md-6">
+      <label for="inputDoc">Email</label>
+      <input type="text" readonly="readonly" class="form-control" placeholder="Email" v-model="clienteP[0].email">
+    </div>
+    <div class="group col-md-6">
+      <label for="inputDoc">Data Nasc</label>
+      <input type="text" readonly="readonly" class="form-control" placeholder="nasc" v-model="clienteP[0].data_nasc"> 
+    </div>
+    <div class="group col-md-6">
+      <label for="inputDoc">Tipo Pessoa</label>
+      <input type="text" readonly="readonly" class="form-control" placeholder="pessoa" v-model="clienteP[0].tipoPessoa">
+    </div>
+  </div>
+      </div>
+  </div>
+  </div>
+
+</section>
+
     <!-- Main content -->
     <section class="content container-fluid">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Lista</h3>
+          <h3 class="box-title">Endereço</h3>
           <a
             href="#"
             class="btn btn-xs pull-right btn-success"
             data-toggle="modal"
             data-target="#modal-create"
-            ><i class="fa fa-plus"></i> Novo</a
-          >
+            ><i class="fa fa-plus"></i> Novo</a>
           <div class="box-body no-padding">
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>Documento</th>
-                  <th>Tipo de Pessoa</th>
-                  <th style="min-width: 134px;">Ações</th>
+                  <th>Rua</th>
+                  <th>Numero</th>
+                  <th>Complemento</th>
+                  <th>Cidade</th>
+                  <th>Estado</th>
+                  <th style="min-width: 134px; text-align: center;">Ações</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="Cliente of Clientes" :key="Cliente.id">
+                <!-- <tr v-for="Cliente of Clientes" :key="Cliente.id">
                   <td>{{ Cliente.nome }}</td>
                   <td>{{ Cliente.email }}</td>
                   <td>{{ Cliente.documento }}</td>
                   <td>{{ Cliente.tipoPessoa }}</td>
-                  <td>
+                  <td> -->
+                    
+                  <tr>
+                  <td>Rua</td>
+                  <td>Numero</td>
+                  <td>Complemento</td>
+                  <td>Cidade</td>
+                  <td>Estado</td>
+                  <td style="text-align: center;">
                     <button
                       @click="editarB(Cliente)"
                       type="button"
@@ -55,12 +104,61 @@
                     >
                       <i class="fa fa-trash"></i> Excluir
                     </button>
-                    &nbsp;
+                    
+                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <section class="content container-fluid">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Telefone</h3>
+          <a
+            href="#"
+            class="btn btn-xs pull-right btn-success"
+            data-toggle="modal"
+            data-target="#modal-create"
+            ><i class="fa fa-plus"></i> Novo</a>
+          <div class="box-body no-padding">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th >telefone</th>
+                  <th style="min-width: 134px; text-align: center;">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr v-for="Cliente of Clientes" :key="Cliente.id">
+                  <td>{{ Cliente.nome }}</td>
+                  <td>{{ Cliente.email }}</td>
+                  <td>{{ Cliente.documento }}</td>
+                  <td>{{ Cliente.tipoPessoa }}</td>
+                  <td> -->
+                    
+                  <tr>
+                  <td>telefone</td>
+                  <td style="text-align: center;">
                     <button
+                      @click="editarB(Cliente)"
                       type="button"
-                      class="btn btn-xs btn btn-dark btn-delete"
+                      class="Editar btn btn-xs btn-info btn-update"
+                      data-toggle="modal"
+                      data-target="#modal-update"
                     >
-                      <i class="fa fa-folder-open"></i> mais
+                      <i class="fa fa-pencil"></i> Editar</button
+                    >&nbsp;
+                    <button
+                     @click="deletarB(Cliente)"
+                      type="button"
+                      class="btn btn-xs btn-danger btn-delete"
+                    >
+                      <i class="fa fa-trash"></i> Excluir
                     </button>
                     
                     
@@ -169,6 +267,7 @@ import Cliente from "../services/cliente";
 export default {
   data() {
     return {
+    idCli: this.$route.params.idCli,
     ClienteE:{
       documento: '',
       nome: '',
@@ -189,19 +288,31 @@ export default {
       tipoPessoa: '',
     },
       Clientes: [],
-    }
-    ;
+    
+
+
+    clienteP:[],
+    };
     
   },
   created: function() {
     this.listar()
+    this.pesquisa()
   },
 
   methods:{
 
+    
     listar(){
         Cliente.listar().then((res) => {
           this.Clientes = res.data;
+      });
+    },
+
+    pesquisa(){
+        Cliente.pesquisa(this.idCli).then((res) => {
+          this.clienteP = res.data;
+          console.log(this.clienteP[0])
       });
     },
 
@@ -262,7 +373,9 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-a {
-  color: #42b983;
+
+.content{
+  min-height: initial;
 }
+
 </style>

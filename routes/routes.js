@@ -26,17 +26,17 @@ router.get('/cliente/', ClienteController.selectTodos); //--> Listar
 router.get('/cliente/:doc/', ClienteController.select); //--> Pesquisar 
 router.delete('/cliente/:doc/', ClienteController.delete); //--> Remover
 
-router.post('/endereco/novo', EnderecoController.insert); //--> Novo 
-router.put('/endereco/:doc/editar/:id', EnderecoController.update); //--> Editar 
-router.get('/endereco/listar', EnderecoController.selectTodos); //--> Listar 
-router.get('/endereco/:doc/listar/', EnderecoController.select); //--> Pesquisar 
-router.delete('/endereco/:doc/remover/:id', EnderecoController.delete); //--> Remover
+router.post('/endereco/', EnderecoController.insert); //--> Novo 
+router.put('/endereco/:doc/:id', EnderecoController.update); //--> Editar 
+router.get('/endereco/', EnderecoController.selectTodos); //--> Listar 
+router.get('/endereco/:doc/', EnderecoController.select); //--> Pesquisar 
+router.delete('/endereco/:doc/:id', EnderecoController.delete); //--> Remover
 
-router.post('/contato/novo', ContatoController.insert); //--> Novo 
-router.put('/contato/:doc/editar/:id', ContatoController.update); //--> Editar 
-router.get('/contato/listar', ContatoController.selectTodos); //--> Listar 
-router.get('/contato/:doc/listar/', ContatoController.select); //--> Pesquisar 
-router.delete('/contato/:doc/remover/:id', ContatoController.delete); //--> Remover
+router.post('/contato/', ContatoController.insert); //--> Novo 
+router.put('/contato/:doc/:id', ContatoController.update); //--> Editar 
+router.get('/contato/', ContatoController.selectTodos); //--> Listar 
+router.get('/contato/:doc/', ContatoController.select); //--> Pesquisar 
+router.delete('/contato/:doc/:id', ContatoController.delete); //--> Remover
 
 router.post('/user/', LoginController.insert); //--> Novo 
 router.put('/user/:id/', LoginController.update); //--> Editar 

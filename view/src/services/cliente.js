@@ -18,4 +18,8 @@ export default {
         return http.delete('/cliente/' + doc + '/')
     },
 
+    pesquisa: (doc) => {
+        return http.get('/cliente/' + doc)
+    },
+
 }
