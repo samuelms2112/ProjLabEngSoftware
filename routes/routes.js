@@ -26,13 +26,13 @@ router.get('/cliente/', ClienteController.selectTodos); //--> Listar
 router.get('/cliente/:doc/', ClienteController.select); //--> Pesquisar 
 router.delete('/cliente/:doc/', ClienteController.delete); //--> Remover
 
-router.post('/endereco/', EnderecoController.insert); //--> Novo 
+router.post('/endereco/:doc', EnderecoController.insert); //--> Novo 
 router.put('/endereco/:doc/:id', EnderecoController.update); //--> Editar 
 router.get('/endereco/', EnderecoController.selectTodos); //--> Listar 
 router.get('/endereco/:doc/', EnderecoController.select); //--> Pesquisar 
 router.delete('/endereco/:doc/:id', EnderecoController.delete); //--> Remover
 
-router.post('/contato/', ContatoController.insert); //--> Novo 
+router.post('/contato/:doc', ContatoController.insert); //--> Novo 
 router.put('/contato/:doc/:id', ContatoController.update); //--> Editar 
 router.get('/contato/', ContatoController.selectTodos); //--> Listar 
 router.get('/contato/:doc/', ContatoController.select); //--> Pesquisar 

@@ -26,7 +26,8 @@ class EnderecoController {
     }
 
     insert(req, res) {
-        const { idPessoa, rua, numero, bairro, complemento, cidade, estado } = req.body;
+        const { rua, numero, bairro, complemento, cidade, estado } = req.body;
+        const idPessoa = req.params.doc;
 
         console.log(idPessoa, rua, numero, bairro, complemento, cidade, estado);
 

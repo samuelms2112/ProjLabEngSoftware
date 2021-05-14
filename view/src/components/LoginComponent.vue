@@ -48,6 +48,7 @@
 
                     this.$router.push({ name: 'Fornecedor'})
                 }).catch(() => {
+                  store.state.user.authenticated = false
                     alert("Dados incorretos");
                 });
             }

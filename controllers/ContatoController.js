@@ -21,7 +21,9 @@ class ContatoController {
     }
 
     insert(req, res) {
-        const { idPessoa, telefone } = req.body;
+        const { telefone } = req.body;
+        const idPessoa = req.params.doc;
+
 
         console.log(idPessoa, telefone);
 

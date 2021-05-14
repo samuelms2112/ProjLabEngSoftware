@@ -25,7 +25,7 @@ class ClienteController {
     }
 
     update(req, res) {
-        const { nome, email, tipoPessoa } = req.body;
+        const { nome, email, tipoPessoa, data_nasc } = req.body;
         const documento = req.params.doc;
 
         console.log("Id do Cliente: " + documento);
@@ -36,6 +36,7 @@ class ClienteController {
             Nome: nome,
             email: email,
             tipoPessoa: tipoPessoa,
+            data_nasc: data_nasc,
         }).table("pessoa").then(data => {
             res.json({ message: "Cliente atualizado com sucesso" });
         }).catch(error => {

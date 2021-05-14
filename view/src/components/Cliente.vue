@@ -28,6 +28,7 @@
                   <th>Nome</th>
                   <th>E-mail</th>
                   <th>Documento</th>
+                  <th>Data Nasc</th>
                   <th>Tipo de Pessoa</th>
                   <th style="min-width: 134px;">Ações</th>
                 </tr>
@@ -37,6 +38,7 @@
                   <td>{{ Cliente.nome }}</td>
                   <td>{{ Cliente.email }}</td>
                   <td>{{ Cliente.documento }}</td>
+                  <td>{{ Cliente.data_nasc }}</td>
                   <td>{{ Cliente.tipoPessoa }}</td>
                   <td>
                     <button
@@ -57,6 +59,7 @@
                     </button>
                     &nbsp;
                     <button
+                    @click="mais(Cliente)"
                       type="button"
                       class="btn btn-xs btn btn-dark btn-delete"
                     >
@@ -97,6 +100,10 @@
                 <label for="inputEmail">E-mail</label>
                 <input type="email" class="form-control" id="inputEmail" name="email" v-model="ClienteE.email">
               </div>
+               <div class="form-group">
+                <label for="inputNomeF">Data de fundação</label>
+                <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="ClienteE.data_nasc">
+              </div>
               <div class="form-group">
                 <label for="inputTp">Tipo de Pessoa</label>
                 <input type="number" readonly="readonly" class="form-control" id="inputTp" name="tp" v-model="ClienteE.tipoPessoa">
@@ -133,7 +140,7 @@
               </div>
               <div class="form-group">
                 <label for="inputNomeF">Data de fundação</label>
-                <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="ClienteS.dataFund">
+                <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="ClienteS.data_nasc">
               </div>
               <div class="form-group">
                 <label for="inputEmail">E-mail</label>
@@ -166,6 +173,7 @@
 <script>
 import Cliente from "../services/cliente";
 
+
 export default {
   data() {
     return {
@@ -173,20 +181,22 @@ export default {
       documento: '',
       nome: '',
       email: '',
-      tipoPessoa: ''
+      tipoPessoa: '',
+      data_nasc: ''
     },
     ClienteS:{
       documento: '',
       nome: '',
-      dataFund: '',
       email: '',
-      tipoPessoa: ''
+      tipoPessoa: '',
+      data_nasc: ''
     },
     cliente:{
       documento: '',
       nome: '',
       email: '',
       tipoPessoa: '',
+      data_nasc: ''
     },
       Clientes: [],
     }
@@ -222,6 +232,11 @@ export default {
       this.deleteF();
      },
 
+     mais(Cliente){
+
+       this.$router.push("cliente/"+Cliente.documento)
+     },
+
      editar(){
         Cliente.editar(this.ClienteE, this.ClienteE.documento).then( res => {
         this.ClienteE = {}
@@ -232,6 +247,7 @@ export default {
 
     salvar(){
 
+      alert(this.ClienteS.data_nasc)
       Cliente.salvar(this.ClienteS).then( res => {
         this.ClienteS = {}
         alert(res.data.message);

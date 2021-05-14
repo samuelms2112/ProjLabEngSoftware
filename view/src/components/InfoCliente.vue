@@ -19,11 +19,11 @@
       <div class="box-body no-padding">
   <br>
         <div class="row">
-    <div class="group col-md-4">
+    <div class="group col-md-6">
       <label for="inputDoc">ID</label>
       <input type="text" readonly="readonly" class="form-control" placeholder="id" v-model="clienteP[0].id ">
     </div>
-    <div class="group col-md-8">
+    <div class="group col-md-6">
       <label for="inputDoc">Documento</label>
       <input type="text" readonly="readonly" class="form-control" placeholder="Documento" v-model="clienteP[0].documento">
     </div>
@@ -59,7 +59,7 @@
             href="#"
             class="btn btn-xs pull-right btn-success"
             data-toggle="modal"
-            data-target="#modal-create"
+            data-target="#modal-createE"
             ><i class="fa fa-plus"></i> Novo</a>
           <div class="box-body no-padding">
             <table class="table table-striped table-hover">
@@ -67,6 +67,7 @@
                 <tr>
                   <th>Rua</th>
                   <th>Numero</th>
+                  <th>Bairro</th>
                   <th>Complemento</th>
                   <th>Cidade</th>
                   <th>Estado</th>
@@ -74,19 +75,13 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr v-for="Cliente of Clientes" :key="Cliente.id">
-                  <td>{{ Cliente.nome }}</td>
-                  <td>{{ Cliente.email }}</td>
-                  <td>{{ Cliente.documento }}</td>
-                  <td>{{ Cliente.tipoPessoa }}</td>
-                  <td> -->
-                    
-                  <tr>
-                  <td>Rua</td>
-                  <td>Numero</td>
-                  <td>Complemento</td>
-                  <td>Cidade</td>
-                  <td>Estado</td>
+                  <tr v-for="Endereco of Enderecos" :key="Endereco.id">
+                  <td>{{ Endereco.rua }}</td>
+                  <td>{{ Endereco.numero }}</td>
+                  <td>{{ Endereco.bairro }}</td>
+                  <td>{{ Endereco.complemento }}</td>
+                  <td>{{ Endereco.cidade }}</td>
+                  <td>{{ Endereco.estado }}</td>
                   <td style="text-align: center;">
                     <button
                       @click="editarB(Cliente)"
@@ -123,7 +118,7 @@
             href="#"
             class="btn btn-xs pull-right btn-success"
             data-toggle="modal"
-            data-target="#modal-create"
+            data-target="#modal-createT"
             ><i class="fa fa-plus"></i> Novo</a>
           <div class="box-body no-padding">
             <table class="table table-striped table-hover">
@@ -134,15 +129,15 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr v-for="Cliente of Clientes" :key="Cliente.id">
+                <!-- <tr v-for="Fornecedor of Fornecedores" :key="Fornecedores.id">
                   <td>{{ Cliente.nome }}</td>
                   <td>{{ Cliente.email }}</td>
                   <td>{{ Cliente.documento }}</td>
                   <td>{{ Cliente.tipoPessoa }}</td>
                   <td> -->
                     
-                  <tr>
-                  <td>telefone</td>
+                  <tr v-for="Fornecedor of Fornecedores" :key="Fornecedor.id">
+                  <td>{{ Fornecedor.telefone }}</td>
                   <td style="text-align: center;">
                     <button
                       @click="editarB(Cliente)"
@@ -171,7 +166,7 @@
       </div>
     </section>
 
-<div class="modal fade" id="modal-update">
+<!-- <div class="modal fade" id="modal-update">
       <div class="modal-dialog">
         <div class="modal-content" style="border-top: 3px solid #00c0ef;">
           <form method="post" @submit.prevent="editar">
@@ -207,43 +202,69 @@
           </form>
         </div>
       </div>
-</div>
+</div> -->
 
-<div class="modal fade" id="modal-create">
+<div class="modal fade" id="modal-createE">
       <div class="modal-dialog">
         <div class="modal-content" style="border-top: 3px solid #00eb14;">
-          <form method="post" @submit.prevent="salvar">
+          <form method="post" @submit.prevent="salvarE">
             <input type="hidden" name="id">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title">Novo Cliente </h4>
+              <h4 class="modal-title">Novo Endereco </h4>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="inputDoc">Documento</label>
-                <input type="text" class="form-control" id="inputDoc" name="doc" v-model="ClienteS.documento">
+                <label for="inputTp">Rua</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoN.rua">
               </div>
               <div class="form-group">
-                <label for="inputRazaoSocial">Razão Social</label>
-                <input type="text" class="form-control" id="inputRs" name="rs" v-model="ClienteS.nome">
+                <label for="inputTp">Numero</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoN.numero">
               </div>
               <div class="form-group">
-                <label for="inputNomeF">Data de fundação</label>
-                <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="ClienteS.dataFund">
+                <label for="inputTp">Bairro</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoN.bairro">
               </div>
               <div class="form-group">
-                <label for="inputEmail">E-mail</label>
-                <input type="email" class="form-control" id="inputEmail" name="email" v-model="ClienteS.email">
+                <label for="inputTp">Complemento</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoN.complemento">
               </div>
               <div class="form-group">
-                <label for="inputTp">Tipo de Pessoa</label>
-                <select v-model="ClienteS.tipoPessoa" class="form-control" id="inputTp" name="tp">
-                  <option disabled value="">Escolha um item</option>
-                  <option value="0">PF</option>
-                  <option value="1">PJ</option>
-                </select>
+                <label for="inputTp">Cidade</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoN.cidade">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Estado</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoN.estado">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+
+<div class="modal fade" id="modal-createT">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00eb14;">
+          <form method="post" @submit.prevent="salvarT">
+            <input type="hidden" name="id">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Novo Telefone </h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputDoc">Telefone</label>
+                <input type="text" class="form-control" id="inputTel" name="Telefone" v-model="TelefoneN.telefone">
               </div>
             </div>
             <div class="modal-footer">
@@ -263,51 +284,38 @@
 
 <script>
 import Cliente from "../services/cliente";
+import Telefone from "../services/telefone";
+import Endereco from "../services/endereco";
 
 export default {
   data() {
     return {
     idCli: this.$route.params.idCli,
-    ClienteE:{
-      documento: '',
-      nome: '',
-      email: '',
-      tipoPessoa: ''
-    },
-    ClienteS:{
-      documento: '',
-      nome: '',
-      dataFund: '',
-      email: '',
-      tipoPessoa: ''
-    },
-    cliente:{
-      documento: '',
-      nome: '',
-      email: '',
-      tipoPessoa: '',
-    },
-      Clientes: [],
-    
-
-
     clienteP:[],
+
+    TelefoneN:{
+        telefone: ''
+    },
+    EnderecoN:{
+        rua: '',
+        numero: '',
+        bairro: '',
+        complemento: '',
+        cidade: '',
+        Estado: '',
+    },
+    Fornecedores:[],
+    Enderecos:[]
     };
     
   },
   created: function() {
-    this.listar()
-    this.pesquisa()
+    this.pesquisa();
+     this.listarT();
+     this.listarE();
   },
 
   methods:{
-
-    
-    listar(){
-        Cliente.listar().then((res) => {
-          this.Clientes = res.data;
-      });
-    },
 
     pesquisa(){
         Cliente.pesquisa(this.idCli).then((res) => {
@@ -316,37 +324,37 @@ export default {
       });
     },
 
-    deleteF(){
-        Cliente.delete(this.ClienteE.documento).then( res => {
-        this.ClienteE = {}
+    listarT(){
+        
+        Telefone.listar(this.idCli).then((res) => {       
+          this.Fornecedores = res.data;
+          console.log(this.Fornecedores)
+      });
+    },
+
+    listarE(){
+        
+        Endereco.listar(this.idCli).then((res) => {       
+          this.Enderecos = res.data;
+          console.log(this.Fornecedores)
+      });
+    },
+
+    salvarT(){
+
+      Telefone.salvar(this.TelefoneN, this.idCli).then( res => {
+        this.TelefoneN = {}
         alert(res.data.message);
-        this.listar()
-      }).console.error("oiiii");
-     },
-
-    editarB(Cliente){
-      this.ClienteE = Cliente
-     },
-
-     deletarB(Cliente){
-      this.ClienteE = Cliente
-      this.deleteF();
-     },
-
-     editar(){
-        Cliente.editar(this.ClienteE, this.ClienteE.documento).then( res => {
-        this.ClienteE = {}
-        alert(res.data.message);
-        this.listar()
+        this.listarT()
       })
-     },
+      
+    },
 
-    salvar(){
+    salvarE(){
 
-      Cliente.salvar(this.ClienteS).then( res => {
-        this.ClienteS = {}
+      Endereco.salvar(this.EnderecoN, this.idCli).then( res => {
+        this.EnderecoN = {}
         alert(res.data.message);
-        this.listar()
       })
       
     },
