@@ -103,6 +103,7 @@ class LoginController {
         if (!email || !pass) {
             return res.status(400).json('incorrect form submission');
         }
+        
         console.log("email retrieved from req: ", email);
         console.log("length of email retrieved from req: ", email.length);
 
@@ -119,7 +120,7 @@ class LoginController {
                     res.status(400).json('Senha Errada')
                 }
             })
-            .catch(err => res.status(400).json('Email Errada'))
+            .catch(err => res.status(400).json('Email Errado'))
     }
 }
 
