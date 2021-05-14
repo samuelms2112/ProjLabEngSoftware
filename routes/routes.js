@@ -43,7 +43,8 @@ router.put('/user/:id/', LoginController.update); //--> Editar
 router.get('/user/', LoginController.selectTodos); //--> Listar 
 router.get('/user/:id/', LoginController.select); //--> Pesquisar 
 router.delete('/user/:id/', LoginController.delete); //--> Remover
-router.get('/login/', LoginController.login); //--> Logar 
+
+router.post('/login/', LoginController.login); //--> Logar 
 
 router.post('/grupo/', GrupoController.insert); //--> Novo 
 router.put('/grupo/:id/', GrupoController.update); //--> Editar 
