@@ -109,7 +109,7 @@ class LoginController {
 
         database.select('*').table('login')
             .where({ email: email }).then(data => {
-                if (bcrypt.compareSync(pass, data[0].senha)) {
+                if (bcrypt.compare(pass, data[0].senha)) {
                     return database.select('*').from('login')
                         .where({ email: email })
                         .then(user => {
