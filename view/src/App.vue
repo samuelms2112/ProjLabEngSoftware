@@ -3,7 +3,7 @@
     <div class="wrapper">
 
     <!-- Main Header -->
-    <header class="main-header">
+    <header v-if="isSessionLogged" class="main-header">
 
       <!-- Logo -->
       <a href="index.html" class="logo">
@@ -56,7 +56,7 @@
       </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+    <aside v-if="isSessionLogged" class="main-sidebar">
 
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
@@ -124,7 +124,7 @@
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer v-if="isSessionLogged" class="main-footer">
       <!-- To the right -->
       <div class="pull-right hidden-xs">
         <a target="_blank" href="https://www.hcode.com.br">Hcode</a>
@@ -138,19 +138,20 @@
 </template>
 
 <script>
+    import store from './store';
 
-
-
-
-export default {
-  name: 'App',
-
-  methods:{
-    click(e){
-        e.classList.add("active")
+    export default {
+        name: 'App',
+        computed: {
+            isSessionLogged: function () {
+              return store.state.user.authenticated;
+            }
+        },
+        methods:{
+            click(e){
+              e.classList.add("active")
+        }
     }
-
-}
 }
 </script>
 

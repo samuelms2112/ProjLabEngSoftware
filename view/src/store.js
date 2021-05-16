@@ -4,7 +4,7 @@ import Vue from 'vue'
 Vue.use(Vuex)
 
 //init store
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
     state: {
         globalError: '',
         user: {
@@ -17,3 +17,5 @@ export const store = new Vuex.Store({
          }
      }
 })
+
+export default store
