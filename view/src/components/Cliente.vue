@@ -10,7 +10,7 @@
     </section>
 
     <!-- Main content -->
-    <section class="content container-fluid">
+    <section class="content container-fluid" style="padding-top: 50px;">
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Lista</h3>

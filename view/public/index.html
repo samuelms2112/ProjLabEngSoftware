@@ -54,6 +54,16 @@
                 }
             })
         })
+
+        $(document).ready(function() {
+            yourFunction();
+        });
+
+        function yourFunction() {
+            var h = window.innerHeight;
+            let el = document.getElementById('app');
+            el.style.height = h + "px";
+        }
     </script>
 </body>
 

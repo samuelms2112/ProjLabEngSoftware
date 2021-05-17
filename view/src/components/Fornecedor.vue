@@ -10,7 +10,7 @@
     </section>
 
     <!-- Main content -->
-    <section class="content container-fluid">
+    <section class="content container-fluid" style="padding-top: 50px;">
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Lista</h3>
@@ -116,7 +116,7 @@
       </div>
 </div>
 
-<div class="modal fade" id="modal-create">
+<div class="modal fade" id="modal-create" >
       <div class="modal-dialog">
         <div class="modal-content" style="border-top: 3px solid #00eb14;">
           <form method="post" @submit.prevent="salvar">
