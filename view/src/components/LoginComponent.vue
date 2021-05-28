@@ -44,6 +44,7 @@
                 Login.authenticate(this.Login).then((response) => {
                     if(response.status == 200) {
                       store.state.user.authenticated = true
+                      localStorage.setItem('token', this.Login.email)
                     }
 
                     this.$router.push({ name: 'Fornecedor'})

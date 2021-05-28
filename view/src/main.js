@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueSession from 'vue-session'
 import App from './App.vue'
 import store from './store'
 import VueRouter from 'vue-router'
@@ -9,6 +10,7 @@ import InfoFornecedor from './components/InfoFornecedor.vue'
 import LoginComponent from './components/LoginComponent.vue'
 
 Vue.use(VueRouter);
+Vue.use(VueSession)
 
 const router = new VueRouter({
     routes: [{
