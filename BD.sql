@@ -63,7 +63,6 @@ CREATE TABLE produto001 (
    `apagado` boolean NOT NULL DEFAULT 0 COMMENT '0 false \n 1 Produto deletado',
 
    FOREIGN KEY (grupo_id) REFERENCES grupo(id),
-   FOREIGN KEY (subgrupo_id) REFERENCES subgrupo(id),
    FULLTEXT (`nome`),
    FULLTEXT (`ean`)
 );
