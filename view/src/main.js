@@ -4,6 +4,8 @@ import App from './App.vue'
 import store from './store'
 import VueRouter from 'vue-router'
 import Fornecedor from './components/Fornecedor.vue'
+import Grupo from './components/Grupo.vue'
+import Produto from './components/Produto.vue'
 import Cliente from './components/Cliente.vue'
 import InfoCliente from './components/InfoCliente.vue'
 import InfoFornecedor from './components/InfoFornecedor.vue'
@@ -48,6 +50,22 @@ const router = new VueRouter({
             component: InfoFornecedor,
             meta: {
                 requiresAuth: true
+            }
+        },
+        {
+            path: '/grupo',
+            component: Grupo,
+            name: 'Grupo',
+            meta: {
+               requiresAuth: true
+            }
+        },
+        {
+            path: '/produto',
+            component: Produto,
+            name: 'Produto',
+            meta: {
+               requiresAuth: true
             }
         }
     ]

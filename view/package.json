@@ -11,8 +11,13 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+<<<<<<< HEAD
     "vue-router": "^3.5.1",
     "vue-session": "^1.0.0"
+=======
+    "vue-cli": "^2.9.6",
+    "vue-router": "^3.5.1"
+>>>>>>> efdd26bc9de4033c3aa00a74e8dc3863ab4f19c4
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
