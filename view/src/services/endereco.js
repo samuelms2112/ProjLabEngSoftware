@@ -10,12 +10,12 @@ export default {
         return http.post('/endereco/' + doc + '/', cliente)
     },
 
-    editar: (cliente, doc) => {
-        return http.put('/endereco/' + doc + '/', cliente)
+    editar: (cliente, doc, id) => {
+        return http.put('/endereco/' + doc + '/' + id + '/', cliente)
     },
 
-    delete: (doc) => {
-        return http.delete('/endereco/' + doc + '/')
+    delete: (doc, id) => {
+        return http.delete('/endereco/' + doc + '/' + id + '/')
     },
 
     pesquisa: (doc) => {

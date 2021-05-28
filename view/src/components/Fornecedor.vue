@@ -1,5 +1,5 @@
 <template>
-  <div class="content-wrapper">
+  <div id="les" class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
@@ -57,11 +57,13 @@
                     >
                       <i class="fa fa-trash"></i> Excluir
                     </button>
+                     &nbsp;
                     <button
+                    @click="mais(fornecedor)"
                       type="button"
-                      class="btn btn-xs btn-danger btn-delete"
+                      class="btn btn-xs btn-dark btn-delete"
                     >
-                      <i class="fa fa-trash"></i> mais
+                      <i class="fa fa-folder-open"></i> mais
                     </button>
                     
                     
@@ -278,6 +280,11 @@ export default {
         alert(res.data.message);
         this.listar()
       })
+     },
+
+     mais(Fornecedor){
+
+       this.$router.push("fornecedor/"+Fornecedor.documento)
      },
 
     

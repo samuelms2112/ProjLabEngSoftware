@@ -42,7 +42,7 @@ const router = new VueRouter({
             }
         },
         {
-            path: '/cliente/:idFor',
+            path: '/fornecedor/:idFor',
             component: InfoFornecedor,
             meta: {
                 requiresAuth: true

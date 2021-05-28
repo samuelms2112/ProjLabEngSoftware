@@ -18,5 +18,9 @@ export default {
         return http.delete('/fornecedor/' + doc + '/')
     },
 
+    pesquisa: (doc) => {
+        return http.get('/fornecedor/' + doc)
+    },
+
 
 }

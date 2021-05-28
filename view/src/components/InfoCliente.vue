@@ -1,6 +1,6 @@
 <template>
 
-  <div class="content-wrapper les">
+  <div id="les" class="content-wrapper les">
     
     <section class="content-header">
       <ol class="breadcrumb">
@@ -84,16 +84,16 @@
                   <td>{{ Endereco.estado }}</td>
                   <td style="text-align: center;">
                     <button
-                      @click="editarB(Cliente)"
+                      @click="editarBE(Endereco)"
                       type="button"
                       class="Editar btn btn-xs btn-info btn-update"
                       data-toggle="modal"
-                      data-target="#modal-update"
+                      data-target="#modal-updateE"
                     >
                       <i class="fa fa-pencil"></i> Editar</button
                     >&nbsp;
                     <button
-                     @click="deletarB(Cliente)"
+                     @click="deletarBE(Endereco)"
                       type="button"
                       class="btn btn-xs btn-danger btn-delete"
                     >
@@ -140,16 +140,16 @@
                   <td>{{ Fornecedor.telefone }}</td>
                   <td style="text-align: center;">
                     <button
-                      @click="editarB(Cliente)"
+                      @click="editarBT(Fornecedor)"
                       type="button"
                       class="Editar btn btn-xs btn-info btn-update"
                       data-toggle="modal"
-                      data-target="#modal-update"
+                      data-target="#modal-updateT"
                     >
                       <i class="fa fa-pencil"></i> Editar</button
                     >&nbsp;
                     <button
-                     @click="deletarB(Cliente)"
+                     @click="deletarBT(Fornecedor)"
                       type="button"
                       class="btn btn-xs btn-danger btn-delete"
                     >
@@ -250,6 +250,52 @@
       </div>
 </div>
 
+<div class="modal fade" id="modal-updateE">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00c0ef;">
+          <form method="post" @submit.prevent="editarE()">
+            <input type="hidden" name="id">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Editar Endereco </h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputTp">Rua</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoE.rua">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Numero</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoE.numero">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Bairro</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoE.bairro">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Complemento</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoE.complemento">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Cidade</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoE.cidade">
+              </div>
+              <div class="form-group">
+                <label for="inputTp">Estado</label>
+                <input type="text" class="form-control" id="inputTp" name="tp" v-model="EnderecoE.estado">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-info">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+
 <div class="modal fade" id="modal-createT">
       <div class="modal-dialog">
         <div class="modal-content" style="border-top: 3px solid #00eb14;">
@@ -265,6 +311,32 @@
               <div class="form-group">
                 <label for="inputDoc">Telefone</label>
                 <input type="text" class="form-control" id="inputTel" name="Telefone" v-model="TelefoneN.telefone">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+
+<div class="modal fade" id="modal-updateT">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00eb14;">
+          <form method="post" @submit.prevent="editarT">
+            <input type="hidden" name="id">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Editar Telefone </h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputDoc">Telefone</label>
+                <input type="text" class="form-control" id="inputTel" name="Telefone" v-model="TelefoneE.telefone">
               </div>
             </div>
             <div class="modal-footer">
@@ -305,14 +377,27 @@ export default {
         Estado: '',
     },
     Fornecedores:[],
-    Enderecos:[]
+    Enderecos:[],
+    EnderecoE:{
+        id: '',
+        rua: '',
+        numero: '',
+        bairro: '',
+        complemento: '',
+        cidade: '',
+        Estado: '',
+    },
+     TelefoneE:{
+        id:'',
+        telefone: ''
+    },
     };
     
   },
   created: function() {
     this.pesquisa();
-     this.listarT();
-     this.listarE();
+    this.listarT();
+    this.listarE();
   },
 
   methods:{
@@ -355,10 +440,60 @@ export default {
       Endereco.salvar(this.EnderecoN, this.idCli).then( res => {
         this.EnderecoN = {}
         alert(res.data.message);
+        this.listarE();
       })
       
     },
 
+    editarBE(endereco){
+      this.EnderecoE = endereco
+     },
+
+     editarE(){
+      Endereco.editar(this.EnderecoE, this.idCli, this.EnderecoE.id).then( res => {
+        this.EnderecoE = {}
+        alert(res.data.message);
+        this.listarE();
+      })
+     },
+
+     editarBT(telefone){
+      this.TelefoneE = telefone
+     },
+
+     editarT(){
+      Telefone.editar(this.TelefoneE, this.idCli, this.TelefoneE.id).then( res => {
+        this.TelefoneE = {}
+        alert(res.data.message);
+        this.listarT();
+      })
+     },
+
+     deleteE(){
+        Endereco.delete(this.idCli, this.EnderecoE.id).then( res => {
+        this.EnderecoE = {}
+        alert(res.data.message);
+        this.listarE()
+      }).console.error("oiiii");
+     },
+
+     deletarBE(enderecoE){
+      this.EnderecoE = enderecoE
+      this.deleteE();
+     },
+
+     deleteT(){
+        Telefone.delete(this.idCli, this.TelefoneE.id).then( res => {
+        this.TelefoneE = {}
+        alert(res.data.message);
+        this.listarT()
+      }).console.error("oiiii");
+     },
+
+     deletarBT(telefoneE){
+      this.TelefoneE = telefoneE
+      this.deleteT();
+     },
     
 
     

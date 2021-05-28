@@ -10,12 +10,12 @@ export default {
         return http.post('/contato/' + doc + '/', telefone)
     },
 
-    editar: (telefone, doc) => {
-        return http.put('/contato/' + doc + '/', telefone)
+    editar: (telefone, doc, id) => {
+        return http.put('/contato/' + doc + '/' + id + '/', telefone)
     },
 
-    delete: (doc) => {
-        return http.delete('/contato/' + doc + '/')
+    delete: (doc, id) => {
+        return http.delete('/contato/' + doc + '/' + id + '/')
     },
 
     pesquisa: (doc) => {
