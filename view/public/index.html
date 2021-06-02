@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="<%= BASE_URL %>dist/css/styles.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>dist/css/skins/skin-blue.min.css">
+    <meta name="author" content="Hcode.com.br" />
+    <meta name="theme-color" content="#3c8dbc">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <!-- jQuery 3 -->
+    <script src="<%= BASE_URL %>bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="<%= BASE_URL %>bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- PACE -->
+    <script src="<%= BASE_URL %>bower_components/PACE/pace.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="<%= BASE_URL %>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="<%= BASE_URL %>bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<%= BASE_URL %>dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<%= BASE_URL %>dist/js/demo.js"></script>
+
+    <!-- page script -->
+    <script type="text/javascript">
+        // To make Pace works on Ajax calls
+        $(document).ajaxStart(function() {
+            Pace.restart()
+        })
+        $('.ajax').click(function() {
+            $.ajax({
+                url: '#',
+                success: function(result) {
+                    $('.ajax-content').html('<hr>Ajax Request Completed !')
+                }
+            })
+        })
+
+        $(document).ready(function() {
+            yourFunction();
+        });
+
+        function yourFunction() {
+            var h = window.innerHeight;
+            let el = document.getElementById('app');
+            let les = document.getElementById('les');
+            el.style.height = h + "px";
+            les.style.height = h + "px";
+        }
+    </script>
+</body>
+
+</html>
