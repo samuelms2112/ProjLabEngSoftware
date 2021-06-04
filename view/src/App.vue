@@ -113,6 +113,12 @@
               <span>XXX</span>
             </a>
           </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-sign-out"></i>
+              <span @click="logout()">Logout</span>
+            </a>
+          </li>
         </ul>
         <!-- /.sidebar-menu -->
       </section>
@@ -138,21 +144,27 @@
 </template>
 
 <script>
-    import store from './store';
+  import store from './store';
 
-    export default {
-        name: 'App',
-        computed: {
-            isSessionLogged: function () {
-              return store.state.user.authenticated;
-            }
-        },
-        methods:{
-            click(e){
-              e.classList.add("active")
-        }
+  export default {
+    name: 'App',
+    computed: {
+      isSessionLogged: function () {
+        return store.state.user.authenticated;
+      }
+    },
+    methods:{
+      click(e){
+        e.classList.add("active")
+      },
+      logout() {
+        if(confirm("Deseja realmente sair?")) {
+          store.state.user.authenticated = false
+          this.$router.push({ name: 'Login'})
+        } 
+      }
     }
-}
+  }
 </script>
 
 <style>
