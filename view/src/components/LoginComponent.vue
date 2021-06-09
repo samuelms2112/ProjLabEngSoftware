@@ -28,7 +28,6 @@
 <script>
     import Login from "../services/login";
     import store from '../store';
-
     export default {
         data() {
             return {
@@ -38,23 +37,17 @@
                 }
             };
         },
-
         methods:{
             authenticate(){
                 Login.authenticate(this.Login).then((response) => {
                     if(response.status == 200) {
                       store.state.user.authenticated = true
-                      this.$router.push({ name: 'Fornecedor'})
-                      //localStorage.setItem('token', this.Login.email)
                     }
-                    //this.$router.push({ name: 'Fornecedor'})
+                    this.$router.push({ name: 'Fornecedor'})
                 }).catch(() => {
-                  store.state.user.authenticated = false
                     alert("Dados incorretos");
                 });
             }
         }
     }
-</script>
-
-''
+</script> 

@@ -103,13 +103,13 @@ class LoginController {
         if (!email || !pass) {
             return res.status(400).json('incorrect form submission');
         }
-        
+
         console.log("email retrieved from req: ", email);
         console.log("length of email retrieved from req: ", email.length);
 
         database.select('*').table('login')
             .where({ email: email }).then(data => {
-                if (bcrypt.compare(pass, data[0].senha)) {
+                if (bcrypt.compareSync(pass, data[0].senha)) {
                     return database.select('*').from('login')
                         .where({ email: email })
                         .then(user => {
