@@ -83,23 +83,24 @@ CREATE TABLE compra (
    FOREIGN KEY (compra_iten_id) REFERENCES compraitens(id)
 );
 
+CREATE TABLE venda (
+   `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+   `pessoa_id` INT NOT NULL,
+   `datacompra` DATETIME DEFAULT CURRENT_TIMESTAMP,
+   `valorpago` DECIMAL(15,2),
+   FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
+);
+
 CREATE TABLE vendaitens (
    `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
    `prod_id` BIGINT(20) UNSIGNED NOT NULL,
    `venda_id` BIGINT(20) UNSIGNED NOT NULL,
    `qtde` DECIMAL(10,2),
-	FOREIGN KEY (prod_id) REFERENCES produto001(id)
+   `valor` DECIMAL(15,2),
+	FOREIGN KEY (prod_id) REFERENCES produto001(id),
+	FOREIGN KEY (venda_id) REFERENCES venda(id)
 );
 
-CREATE TABLE venda (
-   `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-   `pessoa_id` INT NOT NULL,
-   `datacompra` DATETIME DEFAULT CURRENT_TIMESTAMP,
-   `venda_iten_id` BIGINT(20) UNSIGNED NOT NULL,
-   `valorpago` DECIMAL(15,2) NOT NULL,
-   FOREIGN KEY (venda_iten_id) REFERENCES vendaitens(id),
-   FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
-);
 
 CREATE TABLE estoque (
    `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,

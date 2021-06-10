@@ -8,6 +8,7 @@ const ContatoController = require('../controllers/ContatoController');
 const LoginController = require('../controllers/LoginController');
 const GrupoController = require('../controllers/GrupoController');
 const ProdutoController = require('../controllers/ProdutoController');
+const VendaController = require('../controllers/VendaController');
 
 // router.post('/novaTarefa', TaskController.insert);
 // router.get('/listarTarefas', TaskController.selectTodos);
@@ -56,5 +57,10 @@ router.put('/produto/:id/', ProdutoController.update); //--> Editar
 router.get('/produto/', ProdutoController.selectTodos); //--> Listar 
 router.get('/produto/:id/', ProdutoController.select); //--> Pesquisar 
 router.delete('/produto/:id/', ProdutoController.delete); //--> Remover
+
+router.post('/venda/', VendaController.NovaVenda); //--> Novo 
+router.post('/venda/item', VendaController.NovoItem); //--> Novo 
+router.get('/venda/item', VendaController.selectItem); //--> Novo 
+router.delete('/venda/item', VendaController.removerItem); //--> Novo 
 
 module.exports = router;
