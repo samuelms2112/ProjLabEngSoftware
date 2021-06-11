@@ -3,7 +3,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
-          <a href="/index.html"><i class="fa fa-home"></i> Home</a>
+          <router-link to="/home"><i class="fa fa-home"></i> Home</router-link>
         </li>
         <li class="active">Produto</li>
       </ol>
@@ -91,7 +91,7 @@
                 <textarea class="form-control" id="inputEan" name="ean" v-model="produtoE.ean"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputGrupoId">Grupo ID</label>
+                <label for="inputGrupoId">Grupo</label>
                 <select v-model="produtoE.grupo_id" class="form-control" id="inputGrupoId" name="grupo_id">
                     <option disabled value="">Escolha um item</option>
                     <option v-for="grupo of grupos" :selected="grupo.id == produtoE.grupo_id" :key="grupo.id" :value="grupo.id">{{grupo.nome}}</option>
@@ -99,11 +99,11 @@
               </div>
               <div class="form-group">
                 <label for="inputPreco">Preço</label>
-                <input type="number" class="form-control" id="inputPreco" name="preco" v-model="produtoE.preco">
+                <input type="flot" class="form-control" id="inputPreco" name="preco" v-model="produtoE.preco">
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="FecharModalE" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
               <button type="submit" class="btn btn-info">Salvar</button>
             </div>
           </form>
@@ -136,8 +136,8 @@
                 <textarea class="form-control" id="inputEan" name="ean" v-model="produtoS.ean"></textarea>
               </div>
               <div class="form-group">
-                 <label for="inputGrupoId">Grupo ID</label>
-                <select class="form-control" id="inputGrupoId" name="grupo_id">
+                 <label for="inputGrupoId">Grupo</label>
+                <select v-model="produtoS.grupo_id" class="form-control" id="inputGrupoId" name="grupo_id">
                     <option disabled value="">Escolha um item</option>
                     <option v-for="grupo of grupos" :key="grupo.id" :value="grupo.id">{{grupo.nome}}</option>
                 </select>
@@ -149,7 +149,7 @@
               <hr>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="FecharModalS" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
               <button type="submit" class="btn btn-success">Salvar</button>
             </div>
           </form>
@@ -229,12 +229,14 @@ export default {
      },
 
      editar(){
-       alert(this.produtoE.grupo_id)
-      //   Produto.editar(this.produtoE, this.produtoE.id).then( res => {
-      //   this.produtoE = {}
-      //   alert(res.data.message);
-      //   this.listar()
-      // })
+        Produto.editar(this.produtoE, this.produtoE.id).then( res => {
+        this.produtoE = {}
+        alert(res.data.message);
+        this.listar()
+        var botoes = document.getElementById("FecharModalE");
+        botoes.click();
+      })
+      
 
      },
 
@@ -244,6 +246,8 @@ export default {
         this.produtoS = {}
         alert(res.data.message);
         this.listar()
+        var botoes = document.getElementById("FecharModalS");
+        botoes.click();
       })      
     },
 

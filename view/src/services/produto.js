@@ -6,8 +6,8 @@ export default {
         return http.get('/produto')
     },
 
-    salvar: (produto, id) => {
-        return http.post('/produto/' + id + '/', produto)
+    salvar: (produto) => {
+        return http.post('/produto/', produto)
     },
 
     editar: (produto, id) => {

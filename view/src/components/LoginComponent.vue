@@ -43,7 +43,7 @@
                     if(response.status == 200) {
                       store.state.user.authenticated = true
                     }
-                    this.$router.push({ name: 'Fornecedor'})
+                    this.$router.push({ name: 'Home'})
                 }).catch(() => {
                     alert("Dados incorretos");
                 });

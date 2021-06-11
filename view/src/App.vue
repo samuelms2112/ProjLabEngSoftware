@@ -46,7 +46,8 @@
                     <a href="#" class="btn btn-default btn-flat">Perfil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sair</a>
+                    <a href="#" @click="logout()" class="btn btn-default btn-flat">Sair
+                    </a>
                   </div>
                 </li>
               </ul>
@@ -78,40 +79,34 @@
           <li class="header">MENU</li>
           <!-- Optionally, you can add icons to the links -->
           <li class="active" id="Inicial" v-on:click="click('Inicial')">
-            <router-link to="/telainicial">
+            <router-link to="/home">
               <i class="fa fa-home"></i>
               <span>Tela Inicial</span>
             </router-link>
           </li>
           <li id="Fornecedores" v-on:click="click('Fornecedores')">
             <router-link to="/fornecedor">
-              <i class="fa fa-cutlery"></i>
+            <i class="fa fa-address-card"></i>
               <span>Fornecedores</span>
             </router-link>
           </li>
           <li>
               <router-link to="/cliente">
-              <i class="fa fa-calendar-check-o"></i>
+              <i class="fa fa-users"></i>
               <span>Clientes</span>
             </router-link>
           </li>
           <li>
-            <a href="contacts.html">
-              <i class="fa fa-comments"></i>
-              <span>XXX</span>
-            </a>
+            <router-link to="/fornecedor">
+              <i class="fa fa-beer"></i>
+              <span>Produto</span>
+            </router-link>
           </li>
           <li>
-            <a href="users.html">
-              <i class="fa fa-users"></i>
-              <span>XXX</span>
-            </a>
-          </li>
-          <li>
-            <a href="emails.html">
-              <i class="fa fa-envelope"></i>
-              <span>XXX</span>
-            </a>
+            <router-link to="/grupo">
+            <i class="fa fa-table"></i>
+              <span>Grupos</span>
+            </router-link>
           </li>
           <li>
             <a href="#">

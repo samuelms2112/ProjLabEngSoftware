@@ -3,9 +3,9 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
-          <a href="/index.html"><i class="fa fa-home"></i> Home</a>
+          <router-link to="/home"><i class="fa fa-home"></i> Home</router-link>
         </li>
-        <li class="active">Produtos</li>
+        <li class="active">Grupos</li>
       </ol>
     </section>
 
@@ -27,9 +27,6 @@
                 <tr>
                   <th>Código</th>
                   <th>Nome</th>
-                  <th>EAN</th>
-                  <th>Código do grupo</th>
-                  <th>Preço</th>
                   <th style="min-width: 134px;">Ações</th>
                 </tr>
               </thead>

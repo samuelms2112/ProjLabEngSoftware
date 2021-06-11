@@ -3,7 +3,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
-          <a href="/index.html"><i class="fa fa-home"></i> Home</a>
+          <router-link to="/home"><i class="fa fa-home"></i> Home</router-link>
         </li>
         <li class="active">Cliente</li>
       </ol>
