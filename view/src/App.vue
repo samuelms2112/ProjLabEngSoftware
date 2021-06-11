@@ -97,7 +97,7 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/fornecedor">
+            <router-link to="/produto">
               <i class="fa fa-beer"></i>
               <span>Produto</span>
             </router-link>
