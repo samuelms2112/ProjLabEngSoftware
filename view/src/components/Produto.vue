@@ -75,11 +75,11 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title">Editar Menu</h4>
+              <h4 class="modal-title">Editar Produto</h4>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="inputId">id</label>
+                <label for="inputId">Código</label>
                 <input type="text" readonly="readonly" class="form-control" id="inputId" name="id" v-model="produtoE.id">
               </div>
               <div class="form-group">
@@ -91,7 +91,7 @@
                 <textarea class="form-control" id="inputEan" name="ean" v-model="produtoE.ean"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputGrupoId">Grupo</label>
+                <label for="inputGrupoId">Código do grupo</label>
                 <select v-model="produtoE.grupo_id" class="form-control" id="inputGrupoId" name="grupo_id">
                     <option disabled value="">Escolha um item</option>
                     <option v-for="grupo of grupos" :selected="grupo.id == produtoE.grupo_id" :key="grupo.id" :value="grupo.id">{{grupo.nome}}</option>
@@ -124,7 +124,7 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="inputId">id</label>
+                <label for="inputId">Código</label>
                 <input type="text" readonly="readonly" class="form-control" id="inputId" name="id" v-model="produtoS.id">
               </div>
               <div class="form-group">
@@ -136,7 +136,7 @@
                 <textarea class="form-control" id="inputEan" name="ean" v-model="produtoS.ean"></textarea>
               </div>
               <div class="form-group">
-                 <label for="inputGrupoId">Grupo</label>
+                 <label for="inputGrupoId">Código do Grupo</label>
                 <select v-model="produtoS.grupo_id" class="form-control" id="inputGrupoId" name="grupo_id">
                     <option disabled value="">Escolha um item</option>
                     <option v-for="grupo of grupos" :key="grupo.id" :value="grupo.id">{{grupo.nome}}</option>
