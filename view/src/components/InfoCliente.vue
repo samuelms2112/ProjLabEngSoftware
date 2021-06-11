@@ -26,16 +26,16 @@
       <input type="text" readonly="readonly" class="form-control" placeholder="id" v-model="clienteP[0].id ">
     </div>
     <div class="group col-md-6">
-      <label for="inputDoc">Documento</label>
-      <input type="text" readonly="readonly" class="form-control" placeholder="Documento" v-model="clienteP[0].documento">
-    </div>
-    <div class="group col-md-6">
       <label for="inputDoc">Nome</label>
-      <input type="text" readonly="readonly" class="form-control" placeholder="Nome" v-model="clienteP[0].nome">
+      <input type="text" readonly="readonly" class="form-control" placeholder="Nome" v-model="clienteP[0].documento">
     </div>
     <div class="group col-md-6">
       <label for="inputDoc">Email</label>
-      <input type="text" readonly="readonly" class="form-control" placeholder="Email" v-model="clienteP[0].email">
+      <input type="text" readonly="readonly" class="form-control" placeholder="Email" v-model="clienteP[0].nome">
+    </div>
+    <div class="group col-md-6">
+      <label for="inputDoc">Documento</label>
+      <input type="text" readonly="readonly" class="form-control" placeholder="Documento" v-model="clienteP[0].email">
     </div>
     <div class="group col-md-6">
       <label for="inputDoc">Data Nasc</label>

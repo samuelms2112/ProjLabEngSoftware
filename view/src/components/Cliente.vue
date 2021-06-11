@@ -85,23 +85,23 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title">Editar Menu</h4>
+              <h4 class="modal-title">Editar Cliente</h4>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="inputDoc">Documento</label>
-                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc" v-model="ClienteE.documento">
+                <label for="inputDoc">Nome</label>
+                <input type="text" readonly="readonly" class="form-control" id="inputRs" name="rs" v-model="ClienteE.nome">
               </div>
               <div class="form-group">
-                <label for="inputRazaoSocial">Razão Social</label>
-                <input type="text" class="form-control" id="inputRs" name="rs" v-model="ClienteE.nome">
+                <label for="inputRazaoSocial">Documento</label>
+                <input type="text" readonly="readonly" class="form-control" id="inputDoc" name="doc" v-model="ClienteE.documento">
               </div>
               <div class="form-group">
                 <label for="inputEmail">E-mail</label>
                 <input type="email" class="form-control" id="inputEmail" name="email" v-model="ClienteE.email">
               </div>
                <div class="form-group">
-                <label for="inputNomeF">Data de fundação</label>
+                <label for="inputNomeF">Data de nascimento</label>
                 <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="ClienteE.data_nasc">
               </div>
               <div class="form-group">
@@ -131,15 +131,15 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="inputDoc">Documento</label>
-                <input type="text" class="form-control" id="inputDoc" name="doc" v-model="ClienteS.documento">
-              </div>
-              <div class="form-group">
-                <label for="inputRazaoSocial">Razão Social</label>
+                <label for="inputRazaoSocial">Nome</label>
                 <input type="text" class="form-control" id="inputRs" name="rs" v-model="ClienteS.nome">
               </div>
               <div class="form-group">
-                <label for="inputNomeF">Data de fundação</label>
+                <label for="inputDoc">Documento</label>
+                <input type="text" class="form-control" id="inputDoc" name="doc" v-model="ClienteS.documento">
+              </div>              
+              <div class="form-group">
+                <label for="inputNomeF">Data de nascimento</label>
                 <input type="date" class="form-control" id="inputNomeF" name="nf" v-model="ClienteS.data_nasc">
               </div>
               <div class="form-group">
