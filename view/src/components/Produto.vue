@@ -1,11 +1,11 @@
 <template>
-  <div id="les" class="content-wrapper">
+  <div id="les" :style="tamanho" class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
           <a href="/index.html"><i class="fa fa-home"></i> Home</a>
         </li>
-        <li class="active">Grupos</li>
+        <li class="active">Produto</li>
       </ol>
     </section>
 
@@ -38,7 +38,7 @@
                   <td>{{ produto.id }}</td>
                   <td>{{ produto.nome }}</td>
                   <td>{{ produto.ean }}</td>
-                  <td>{{ produto.grupo.pesquisarGrupo(produto.grupo_id) }}</td>
+                  <td :id="produto.grupo_id">{{ produto.grupo }}</td>
                   <td>{{ produto.preco }}</td>
                   <td>
                     <button
@@ -56,14 +56,6 @@
                       class="btn btn-xs btn-danger btn-delete"
                     >
                       <i class="fa fa-trash"></i> Excluir
-                    </button>
-                     &nbsp;
-                    <button
-                    @click="mais(produto)"
-                      type="button"
-                      class="btn btn-xs btn-dark btn-delete"
-                    >
-                      <i class="fa fa-folder-open"></i> mais
                     </button>
                   </td>
                 </tr>
@@ -100,14 +92,14 @@
               </div>
               <div class="form-group">
                 <label for="inputGrupoId">Grupo ID</label>
-                <select v-model="produtoS.tipoPessoa" class="form-control" id="inputGrupoId" name="grupo_id">
+                <select v-model="produtoE.grupo_id" class="form-control" id="inputGrupoId" name="grupo_id">
                     <option disabled value="">Escolha um item</option>
-                    <option v-for="grupo of grupos" :key="grupo.id" :value="grupo.id">{{grupo.nome}}</option>
+                    <option v-for="grupo of grupos" :selected="grupo.id == produtoE.grupo_id" :key="grupo.id" :value="grupo.id">{{grupo.nome}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="inputPreco">Preço</label>
-                <input type="number" class="form-control" id="inputPreco" name="preco" v-model="produtoE.tipoPessoa">
+                <input type="number" class="form-control" id="inputPreco" name="preco" v-model="produtoE.preco">
               </div>
             </div>
             <div class="modal-footer">
@@ -144,10 +136,10 @@
                 <textarea class="form-control" id="inputEan" name="ean" v-model="produtoS.ean"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputpreco">Grupo ID</label>
-                <select v-model="produtoS.tipoPessoa" class="form-control" id="inputTp" name="tp">
+                 <label for="inputGrupoId">Grupo ID</label>
+                <select class="form-control" id="inputGrupoId" name="grupo_id">
                     <option disabled value="">Escolha um item</option>
-                    <option v-for="grupo of grupos" :key="grupo.id" value:{{grupo.id}}>{{grupo.nome}}</option>
+                    <option v-for="grupo of grupos" :key="grupo.id" :value="grupo.id">{{grupo.nome}}</option>
                 </select>
               </div>
               <div class="form-group">
@@ -178,11 +170,13 @@ import Grupo from "../services/grupo";
 export default {
   data() {
     return {
+      tamanho: '' ,
     produtoE:{
       id: '',
       nome: '',
       ean: '',
       grupo_id: '',
+      grupo: '',
       preco: ''
     },
     produtoS:{
@@ -204,7 +198,9 @@ export default {
     
   },
   created: function() {
+    this.AjustarTamanho()
     this.listar()
+    this.listarGrupos()
   },
 
   methods:{
@@ -212,14 +208,15 @@ export default {
     listar(){
         Produto.listar().then((res) => {
           this.produtos = res.data;
+          console.log(this.produtos)
       });
     },
-    // 
-    // listarGrupos(){
-    //     Grupo.listar().then((res) => {
-    //       this.grupos = res.data;
-    //   });
-    // },
+    
+    listarGrupos(){
+        Grupo.listar().then((res) => {
+          this.grupos = res.data;
+      });
+    },
     
     pesquisarGrupo(idGrupo){
         Grupo.pesquisa(idGrupo).then((res) => {
@@ -232,11 +229,13 @@ export default {
      },
 
      editar(){
-        Produto.editar(this.produtoE, this.produtoE.id).then( res => {
-        this.produtoE = {}
-        alert(res.data.message);
-        this.listar()
-      })
+       alert(this.produtoE.grupo_id)
+      //   Produto.editar(this.produtoE, this.produtoE.id).then( res => {
+      //   this.produtoE = {}
+      //   alert(res.data.message);
+      //   this.listar()
+      // })
+
      },
 
     salvar(){
@@ -262,9 +261,15 @@ export default {
        this.$router.push("produto/"+Produto.id)
      },
 
+    AjustarTamanho() {
+            var h = window.innerHeight-100; 
+            this.tamanho = "min-height:"+ h + "px";
+        }
+
     
   }
 };
+
 </script>
 
 

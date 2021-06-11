@@ -1,5 +1,5 @@
 <template>
-  <div id="les" class="content-wrapper">
+  <div id="les" :style="tamanho" class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
@@ -124,6 +124,7 @@ import Grupo from "../services/grupo";
 export default {
   data() {
     return {
+      tamanho: '' ,
     grupoE:{
       id: '',
       nome: ''
@@ -141,6 +142,7 @@ export default {
     
   },
   created: function() {
+    this.AjustarTamanho()
     this.listar()
   },
 
@@ -171,7 +173,11 @@ export default {
         alert(res.data.message);
         this.listar()
       })      
-    }
+    },
+    AjustarTamanho() {
+            var h = window.innerHeight-100; 
+            this.tamanho = "min-height:"+ h + "px";
+        }
   }
 };
 </script>

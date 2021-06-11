@@ -1,6 +1,5 @@
 <template>
-
-  <div id="les" class="content-wrapper les">
+  <div id="les" :style="tamanho" class="content-wrapper les">
     
     <section class="content-header">
       <ol class="breadcrumb">
@@ -363,6 +362,7 @@ export default {
   data() {
     return {
     idCli: this.$route.params.idCli,
+    tamanho: '' ,
     clienteP:[],
 
     TelefoneN:{
@@ -395,6 +395,7 @@ export default {
     
   },
   created: function() {
+    this.AjustarTamanho()
     this.pesquisa();
     this.listarT();
     this.listarE();
@@ -494,6 +495,10 @@ export default {
       this.TelefoneE = telefoneE
       this.deleteT();
      },
+     AjustarTamanho() {
+            var h = window.innerHeight-100; 
+            this.tamanho = "min-height:"+ h + "px";
+        }
     
 
     

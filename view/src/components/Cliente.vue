@@ -1,5 +1,5 @@
 <template>
-  <div id="les" class="content-wrapper">
+  <div id="les" :style="tamanho" class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
@@ -177,6 +177,7 @@ import Cliente from "../services/cliente";
 export default {
   data() {
     return {
+      tamanho: '' ,
     ClienteE:{
       documento: '',
       nome: '',
@@ -204,6 +205,7 @@ export default {
     
   },
   created: function() {
+    this.AjustarTamanho()
     this.listar()
   },
 
@@ -255,6 +257,10 @@ export default {
       })
       
     },
+    AjustarTamanho() {
+            var h = window.innerHeight-100; 
+            this.tamanho = "min-height:"+ h + "px";
+        }
 
     
 

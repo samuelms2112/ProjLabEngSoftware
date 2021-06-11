@@ -70,13 +70,25 @@ class ProdutoController {
         });
     }
 
+    // selectTodos(req, res) {
+    //     database.select("*").table("produto001").where({ apagado: 0 }).then(data => {
+    //         console.log(data);
+    //         res.json(data);
+    //     }).catch(error => {
+    //         console.log(error);
+    //     });
+    // }
     selectTodos(req, res) {
-        database.select("*").table("produto001").where({ apagado: 0 }).then(data => {
-            console.log(data);
-            res.json(data);
-        }).catch(error => {
-            console.log(error);
-        });
+        database.select("p.*", "g.nome AS grupo")
+            .table("produto001 AS p")
+            .innerJoin("grupo AS g", "p.grupo_id", "g.id")
+            .where({ apagado: 0 })
+            .then(data => {
+                console.log(data);
+                res.json(data);
+            }).catch(error => {
+                console.log(error);
+            });
     }
 
 

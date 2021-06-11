@@ -1,5 +1,5 @@
 <template>
-  <div id="les" class="content-wrapper">
+  <div id="les" :style="tamanho" class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li>
@@ -208,6 +208,7 @@ import Fornecedor from "../services/fornecedor";
 export default {
   data() {
     return {
+      tamanho: '' ,
     fornecedorE:{
       documento: '',
       nome: '',
@@ -241,6 +242,7 @@ export default {
     
   },
   created: function() {
+    this.AjustarTamanho()
     this.listar()
   },
 
@@ -286,6 +288,10 @@ export default {
 
        this.$router.push("fornecedor/"+Fornecedor.documento)
      },
+     AjustarTamanho() {
+            var h = window.innerHeight-100; 
+            this.tamanho = "min-height:"+ h + "px";
+        }
 
     
   }
