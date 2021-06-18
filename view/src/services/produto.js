@@ -18,8 +18,8 @@ export default {
         return http.delete('/produto/' + id + '/')
     },
 
-    pesquisa: (id) => {
-        return http.get('/produto/' + id)
+    pesquisa: (ean) => {
+        return http.get('/produto/' + ean)
     },
 
 }

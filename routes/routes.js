@@ -55,7 +55,7 @@ router.get('/grupo/:id/', GrupoController.select); //--> Pesquisar
 router.post('/produto/', ProdutoController.insert); //--> Novo 
 router.put('/produto/:id/', ProdutoController.update); //--> Editar 
 router.get('/produto/', ProdutoController.selectTodos); //--> Listar 
-router.get('/produto/:id/', ProdutoController.select); //--> Pesquisar 
+router.get('/produto/:ean/', ProdutoController.select); //--> Pesquisar 
 router.delete('/produto/:id/', ProdutoController.delete); //--> Remover
 
 router.post('/venda/', VendaController.NovaVenda); //--> Novo 

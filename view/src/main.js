@@ -11,6 +11,7 @@ import InfoCliente from './components/InfoCliente.vue'
 import InfoFornecedor from './components/InfoFornecedor.vue'
 import LoginComponent from './components/LoginComponent.vue'
 import Home from './components/Home.vue'
+import Venda from './components/Venda.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueSession)
@@ -73,6 +74,14 @@ const router = new VueRouter({
             path: '/produto',
             component: Produto,
             name: 'Produto',
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/venda',
+            component: Venda,
+            name: 'Venda',
             meta: {
                 requiresAuth: true
             }

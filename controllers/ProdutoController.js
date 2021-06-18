@@ -58,12 +58,12 @@ class ProdutoController {
     }
 
     select(req, res) {
-        const id = req.params.id;
+        const id = req.params.ean;
 
         console.log("Id do Cliente: " + id);
 
 
-        database.select("*").table("produto001").where({ id: id }).then(data => {
+        database.select("*").table("produto001").where({ ean: id }).then(data => {
             res.json(data);
         }).catch(error => {
             console.log(error);
