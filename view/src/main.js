@@ -10,7 +10,7 @@ import Cliente from './components/Cliente.vue'
 import InfoCliente from './components/InfoCliente.vue'
 import InfoFornecedor from './components/InfoFornecedor.vue'
 import LoginComponent from './components/LoginComponent.vue'
-import Home from './components/Home.vue'
+//import Home from './components/Home.vue'
 import Venda from './components/Venda.vue'
 
 Vue.use(VueRouter);
@@ -19,7 +19,7 @@ Vue.use(VueSession)
 const router = new VueRouter({
     routes: [{
             path: '/home',
-            component: Home,
+            component: Venda,
             name: 'Home',
             meta: {
                 requiresAuth: true
